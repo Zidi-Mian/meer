@@ -1,0 +1,2640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Meer International Travel | From US</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #172033;
+            background: #f5f8fc;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================== */
+
+        .navbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 22px 6%;
+            color: white;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        .nav-button {
+            padding: 11px 20px;
+            border: 1px solid rgba(255,255,255,0.5);
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .nav-button:hover {
+            background: white;
+            color: #0369a1;
+        }
+
+        /* MOBILE MENU BUTTON */
+
+        .menu-toggle {
+            display: none;
+
+            width: 42px;
+            height: 42px;
+
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 10px;
+
+            background: rgba(0,0,0,0.15);
+            color: white;
+
+            font-size: 22px;
+            cursor: pointer;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: 720px;
+            position: relative;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(4, 18, 38, 0.90),
+                    rgba(4, 18, 38, 0.45),
+                    rgba(4, 18, 38, 0.15)
+                ),
+                url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2000&q=85")
+                center/cover no-repeat;
+
+            display: flex;
+            align-items: center;
+
+            padding: 120px 6% 170px;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            color: white;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 30px;
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            backdrop-filter: blur(8px);
+
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 72px);
+            line-height: 1.05;
+            letter-spacing: -3px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: #38bdf8;
+        }
+
+        .hero p {
+            max-width: 560px;
+            font-size: 18px;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.85);
+        }
+
+        /* =========================
+           BOOKING CARD
+        ========================== */
+
+        .booking-wrapper {
+            position: relative;
+            margin-top: -110px;
+            padding: 0 6%;
+            z-index: 5;
+        }
+
+        .booking-card {
+            max-width: 1200px;
+            margin: auto;
+
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(20px);
+
+            border-radius: 22px;
+            padding: 30px;
+
+            box-shadow:
+                0 25px 70px rgba(15, 23, 42, 0.18);
+        }
+
+        .booking-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .booking-header h2 {
+            color: #102a43;
+            font-size: 24px;
+        }
+
+        .booking-header span {
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .trip-type {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 22px;
+        }
+
+        .trip-type label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .trip-type input {
+            accent-color: #0284c7;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            color: #475569;
+            margin-bottom: 7px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            height: 50px;
+
+            border: 1px solid #dbe3ec;
+            border-radius: 10px;
+
+            padding: 0 14px;
+
+            font-size: 14px;
+            color: #172033;
+            background: white;
+
+            transition: 0.2s;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #0284c7;
+
+            box-shadow:
+                0 0 0 3px rgba(2,132,199,0.10);
+        }
+
+        .customer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 15px;
+        }
+
+        .search-button {
+            width: 100%;
+            height: 52px;
+
+            margin-top: 20px;
+
+            border: none;
+            border-radius: 11px;
+
+            background: linear-gradient(
+                135deg,
+                #0284c7,
+                #0369a1
+            );
+
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 25px rgba(2,132,199,0.25);
+
+            transition: 0.25s;
+        }
+
+        .search-button:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 14px 30px rgba(2,132,199,0.32);
+        }
+
+        /* =========================
+           SECTION
+        ========================== */
+
+        .section {
+            padding: 90px 6%;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 45px;
+        }
+
+        .section-header small {
+            color: #0284c7;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-header h2 {
+            margin-top: 10px;
+            font-size: 38px;
+            color: #102a43;
+        }
+
+        .section-header p {
+            margin-top: 12px;
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           FEATURES
+        ========================== */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+
+            box-shadow:
+                0 8px 30px rgba(15,23,42,0.06);
+
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .feature-icon {
+            width: 55px;
+            height: 55px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #e0f2fe;
+            color: #0284c7;
+
+            border-radius: 14px;
+            font-size: 25px;
+
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            color: #102a43;
+        }
+
+        .feature-card p {
+            color: #64748b;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* =========================
+           DESTINATIONS
+        ========================== */
+
+        .destinations {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .destination {
+            height: 280px;
+            border-radius: 18px;
+
+            position: relative;
+            overflow: hidden;
+
+            background-size: cover;
+            background-position: center;
+
+            cursor: pointer;
+        }
+
+        .destination::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    transparent 35%,
+                    rgba(0,0,0,0.78)
+                );
+        }
+
+        .destination-content {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 2;
+            color: white;
+        }
+
+        .destination-content h3 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .destination-content p {
+            font-size: 13px;
+            opacity: 0.85;
+        }
+
+        .new-york {
+            background-image:
+                url("https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?auto=format&fit=crop&w=900&q=80");
+        }
+
+        .miami {
+            background-image:
+                url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80");
+        }
+
+        .los-angeles {
+            background-image:
+                url("https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da?auto=format&fit=crop&w=900&q=80");
+        }
+
+        .las-vegas {
+            background-image:
+                url("https://images.unsplash.com/photo-1513366208864-87536b8bd7b4?auto=format&fit=crop&w=900&q=80");
+        }
+
+        /* =========================
+           CTA
+        ========================== */
+
+        .cta {
+            margin: 20px 6% 80px;
+
+            border-radius: 24px;
+
+            padding: 60px 30px;
+
+            text-align: center;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0369a1,
+                    #0f172a
+                );
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 25px;
+        }
+
+        .cta a {
+            display: inline-block;
+
+            background: white;
+            color: #0369a1;
+
+            padding: 13px 25px;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #071526;
+            color: white;
+
+            padding: 55px 6% 25px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 60px;
+        }
+
+        .footer-brand h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .footer-brand p {
+            color: #94a3b8;
+            max-width: 350px;
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        /* QUICK NAVIGATION */
+
+        .footer-navigation h4 {
+            font-size: 15px;
+            margin-bottom: 18px;
+            color: white;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(100px, 1fr));
+            gap: 13px 30px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #38bdf8;
+            transform: translateX(3px);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 35px auto 0;
+
+            padding-top: 20px;
+
+            border-top: 1px solid rgba(255,255,255,0.08);
+
+            color: #64748b;
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================== */
+
+        @media (max-width: 1000px) {
+
+            .hero {
+                min-height: 650px;
+            }
+
+            .form-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .customer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .destinations {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-links {
+                gap: 18px;
+            }
+
+            .navbar {
+                padding-left: 4%;
+                padding-right: 4%;
+            }
+
+            .logo {
+                font-size: 21px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+
+        /* =========================
+           MOBILE NAVIGATION
+        ========================== */
+
+        @media (max-width: 750px) {
+
+            .navbar {
+                padding: 18px 5%;
+            }
+
+            .nav-links,
+            .nav-button {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .mobile-menu {
+                position: absolute;
+                top: 75px;
+                left: 5%;
+                right: 5%;
+
+                display: none;
+
+                padding: 12px;
+
+                background: rgba(7, 21, 38, 0.97);
+                backdrop-filter: blur(15px);
+
+                border: 1px solid rgba(255,255,255,0.1);
+                border-radius: 15px;
+
+                box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+            }
+
+            .mobile-menu.active {
+                display: block;
+            }
+
+            .mobile-menu a {
+                display: block;
+
+                padding: 13px 15px;
+
+                color: white;
+                text-decoration: none;
+
+                font-size: 14px;
+                font-weight: 600;
+
+                border-radius: 9px;
+
+                transition: 0.3s;
+            }
+
+            .mobile-menu a:hover {
+                background: rgba(56,189,248,0.12);
+                color: #38bdf8;
+            }
+
+            .mobile-menu .mobile-book-button {
+                margin-top: 8px;
+
+                text-align: center;
+
+                background: #0284c7;
+                color: white;
+            }
+
+            .mobile-menu .mobile-book-button:hover {
+                background: #0369a1;
+                color: white;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 650px) {
+
+            body {
+                overflow-x: hidden;
+            }
+
+            .logo {
+                font-size: 19px;
+                letter-spacing: -0.7px;
+            }
+
+            .hero {
+                min-height: 620px;
+
+                padding:
+                    110px 5% 170px;
+
+                background-position: 60% center;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+                letter-spacing: -2px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .booking-wrapper {
+                margin-top: -100px;
+                padding: 0 4%;
+            }
+
+            .booking-card {
+                padding: 22px 17px;
+                border-radius: 17px;
+            }
+
+            .booking-header {
+                display: block;
+            }
+
+            .booking-header h2 {
+                font-size: 21px;
+            }
+
+            .booking-header span {
+                display: block;
+                margin-top: 5px;
+            }
+
+            .trip-type {
+                gap: 18px;
+            }
+
+            .form-grid,
+            .customer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            input,
+            select {
+                height: 48px;
+                font-size: 16px;
+            }
+
+            .section {
+                padding: 65px 5%;
+            }
+
+            .section-header h2 {
+                font-size: 30px;
+            }
+
+            .features,
+            .destinations {
+                grid-template-columns: 1fr;
+            }
+
+            .destination {
+                height: 250px;
+            }
+
+            .cta {
+                margin: 10px 4% 55px;
+                padding: 45px 20px;
+            }
+
+            .cta h2 {
+                font-size: 29px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .footer-links {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+
+        /* =========================
+           SMALL PHONES
+        ========================== */
+
+        @media (max-width: 380px) {
+
+            .logo {
+                font-size: 17px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .booking-card {
+                padding: 18px 14px;
+            }
+
+            .section-header h2 {
+                font-size: 27px;
+            }
+
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            ✈ Meer Internationl Travel<span> From USA</span>
+        </div>
+
+        <ul class="nav-links">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="destination.html">Destinations</a>
+            </li>
+
+            <li>
+                <a href="whyus.html">Why Us</a>
+            </li>
+
+            <li>
+                <a href="contact.html">Contact</a>
+            </li>
+        </ul>
+
+        <a href="#booking" class="nav-button">
+            Book a Flight
+        </a>
+
+        <!-- MOBILE MENU BUTTON -->
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu">
+            ☰
+        </button>
+
+        <!-- MOBILE MENU -->
+
+        <div class="mobile-menu" id="mobileMenu">
+
+            <a href="index.html" class="mobile-link">
+                Home
+            </a>
+
+            <a href="destination.html" class="mobile-link">
+                Destinations
+            </a>
+
+            <a href="whyus.html" class="mobile-link">
+                Why Us
+            </a>
+
+            <a href="contact.html" class="mobile-link">
+                Contact
+            </a>
+
+            <a href="#booking" class="mobile-link mobile-book-button">
+                Book a Flight
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                ✈ Travel Across the USA
+            </div>
+
+            <h1>
+                Your Journey<br>
+                <span>Starts Here.</span>
+            </h1>
+
+            <p>
+                Search flights, explore destinations and
+                send your travel request to our booking team.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         BOOKING FORM
+    ========================== -->
+
+    <div
+        class="booking-wrapper"
+        id="booking"
+    >
+
+        <form
+            class="booking-card"
+            action="https://formsubmit.co/YOUR-EMAIL@example.com"
+            method="POST"
+        >
+
+            <div class="booking-header">
+
+                <h2>
+                    ✈ Search & Request a Flight
+                </h2>
+
+                <span>
+                    We'll contact you with available options
+                </span>
+
+            </div>
+
+
+            <!-- Trip Type -->
+
+            <div class="trip-type">
+
+                <label>
+                    <input
+                        type="radio"
+                        name="Trip Type"
+                        value="Round Trip"
+                        checked
+                    >
+                    Round Trip
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="Trip Type"
+                        value="One Way"
+                    >
+                    One Way
+                </label>
+
+            </div>
+
+
+            <!-- Flight Details -->
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label for="from">From Airport</label>
+
+    <select id="from" name="from" required>
+        <option value="">Select Departure Airport</option>
+
+        <!-- New York -->
+        <option value="JFK">JFK - John F. Kennedy International Airport, New York, NY</option>
+        <option value="LGA">LGA - LaGuardia Airport, New York, NY</option>
+        <option value="EWR">EWR - Newark Liberty International Airport, Newark, NJ</option>
+
+        <!-- California -->
+        <option value="LAX">LAX - Los Angeles International Airport, Los Angeles, CA</option>
+        <option value="SFO">SFO - San Francisco International Airport, San Francisco, CA</option>
+        <option value="SAN">SAN - San Diego International Airport, San Diego, CA</option>
+        <option value="SJC">SJC - San José Mineta International Airport, San Jose, CA</option>
+        <option value="OAK">OAK - Oakland International Airport, Oakland, CA</option>
+        <option value="SMF">SMF - Sacramento International Airport, Sacramento, CA</option>
+
+        <!-- Florida -->
+        <option value="MIA">MIA - Miami International Airport, Miami, FL</option>
+        <option value="FLL">FLL - Fort Lauderdale-Hollywood International Airport, Fort Lauderdale, FL</option>
+        <option value="MCO">MCO - Orlando International Airport, Orlando, FL</option>
+        <option value="TPA">TPA - Tampa International Airport, Tampa, FL</option>
+        <option value="JAX">JAX - Jacksonville International Airport, Jacksonville, FL</option>
+        <option value="RSW">RSW - Southwest Florida International Airport, Fort Myers, FL</option>
+        <option value="PBI">PBI - Palm Beach International Airport, West Palm Beach, FL</option>
+
+        <!-- Texas -->
+        <option value="DFW">DFW - Dallas/Fort Worth International Airport, Dallas, TX</option>
+        <option value="IAH">IAH - George Bush Intercontinental Airport, Houston, TX</option>
+        <option value="HOU">HOU - William P. Hobby Airport, Houston, TX</option>
+        <option value="AUS">AUS - Austin-Bergstrom International Airport, Austin, TX</option>
+        <option value="SAT">SAT - San Antonio International Airport, San Antonio, TX</option>
+
+        <!-- Illinois -->
+        <option value="ORD">ORD - O'Hare International Airport, Chicago, IL</option>
+        <option value="MDW">MDW - Midway International Airport, Chicago, IL</option>
+
+        <!-- Georgia -->
+        <option value="ATL">ATL - Hartsfield-Jackson Atlanta International Airport, Atlanta, GA</option>
+        <option value="SAV">SAV - Savannah/Hilton Head International Airport, Savannah, GA</option>
+
+        <!-- Colorado -->
+        <option value="DEN">DEN - Denver International Airport, Denver, CO</option>
+        <option value="COS">COS - Colorado Springs Airport, Colorado Springs, CO</option>
+
+        <!-- Washington -->
+        <option value="SEA">SEA - Seattle-Tacoma International Airport, Seattle, WA</option>
+        <option value="GEG">GEG - Spokane International Airport, Spokane, WA</option>
+
+        <!-- Massachusetts -->
+        <option value="BOS">BOS - Boston Logan International Airport, Boston, MA</option>
+
+        <!-- Nevada -->
+        <option value="LAS">LAS - Harry Reid International Airport, Las Vegas, NV</option>
+        <option value="RNO">RNO - Reno-Tahoe International Airport, Reno, NV</option>
+
+        <!-- Arizona -->
+        <option value="PHX">PHX - Phoenix Sky Harbor International Airport, Phoenix, AZ</option>
+        <option value="TUS">TUS - Tucson International Airport, Tucson, AZ</option>
+
+        <!-- Pennsylvania -->
+        <option value="PHL">PHL - Philadelphia International Airport, Philadelphia, PA</option>
+        <option value="PIT">PIT - Pittsburgh International Airport, Pittsburgh, PA</option>
+
+        <!-- Michigan -->
+        <option value="DTW">DTW - Detroit Metropolitan Airport, Detroit, MI</option>
+        <option value="GRR">GRR - Gerald R. Ford International Airport, Grand Rapids, MI</option>
+
+        <!-- Minnesota -->
+        <option value="MSP">MSP - Minneapolis-Saint Paul International Airport, Minneapolis, MN</option>
+
+        <!-- North Carolina -->
+        <option value="CLT">CLT - Charlotte Douglas International Airport, Charlotte, NC</option>
+        <option value="RDU">RDU - Raleigh-Durham International Airport, Raleigh, NC</option>
+
+        <!-- New Jersey -->
+        <option value="ACY">ACY - Atlantic City International Airport, Atlantic City, NJ</option>
+
+        <!-- Maryland -->
+        <option value="BWI">BWI - Baltimore/Washington International Airport, Baltimore, MD</option>
+
+        <!-- Washington DC -->
+        <option value="DCA">DCA - Ronald Reagan Washington National Airport, Washington, DC</option>
+        <option value="IAD">IAD - Washington Dulles International Airport, Dulles, VA</option>
+
+        <!-- Oregon -->
+        <option value="PDX">PDX - Portland International Airport, Portland, OR</option>
+
+        <!-- Missouri -->
+        <option value="STL">STL - St. Louis Lambert International Airport, St. Louis, MO</option>
+        <option value="MCI">MCI - Kansas City International Airport, Kansas City, MO</option>
+
+        <!-- Tennessee -->
+        <option value="BNA">BNA - Nashville International Airport, Nashville, TN</option>
+        <option value="MEM">MEM - Memphis International Airport, Memphis, TN</option>
+
+        <!-- Ohio -->
+        <option value="CLE">CLE - Cleveland Hopkins International Airport, Cleveland, OH</option>
+        <option value="CMH">CMH - John Glenn Columbus International Airport, Columbus, OH</option>
+        <option value="CVG">CVG - Cincinnati/Northern Kentucky International Airport, Cincinnati, OH</option>
+
+        <!-- Louisiana -->
+        <option value="MSY">MSY - Louis Armstrong New Orleans International Airport, New Orleans, LA</option>
+
+        <!-- Hawaii -->
+        <option value="HNL">HNL - Daniel K. Inouye International Airport, Honolulu, HI</option>
+        <option value="OGG">OGG - Kahului Airport, Maui, HI</option>
+
+        <!-- Alaska -->
+        <option value="ANC">ANC - Ted Stevens Anchorage International Airport, Anchorage, AK</option>
+
+        <!-- Utah -->
+        <option value="SLC">SLC - Salt Lake City International Airport, Salt Lake City, UT</option>
+
+        <!-- Virginia -->
+        <option value="RIC">RIC - Richmond International Airport, Richmond, VA</option>
+
+        <!-- Indiana -->
+        <option value="IND">IND - Indianapolis International Airport, Indianapolis, IN</option>
+
+        <!-- Wisconsin -->
+        <option value="MKE">MKE - Milwaukee Mitchell International Airport, Milwaukee, WI</option>
+
+        <!-- Connecticut -->
+        <option value="BDL">BDL - Bradley International Airport, Hartford, CT</option>
+
+        <!-- Oklahoma -->
+        <option value="OKC">OKC - Will Rogers World Airport, Oklahoma City, OK</option>
+
+        <!-- Nebraska -->
+        <option value="OMA">OMA - Eppley Airfield, Omaha, NE</option>
+
+        <!-- New Mexico -->
+        <option value="ABQ">ABQ - Albuquerque International Sunport, Albuquerque, NM</option>
+
+        <!-- Kentucky -->
+        <option value="LEX">LEX - Blue Grass Airport, Lexington, KY</option>
+        <option value="SDF">SDF - Louisville Muhammad Ali International Airport, Louisville, KY</option>
+
+        <!-- South Carolina -->
+        <option value="CHS">CHS - Charleston International Airport, Charleston, SC</option>
+        <option value="GSP">GSP - Greenville-Spartanburg International Airport, Greenville, SC</option>
+
+        <!-- Alabama -->
+        <option value="BHM">BHM - Birmingham-Shuttlesworth International Airport, Birmingham, AL</option>
+
+        <!-- Arkansas -->
+        <option value="LIT">LIT - Bill and Hillary Clinton National Airport, Little Rock, AR</option>
+
+        <!-- Mississippi -->
+        <option value="JAN">JAN - Jackson-Medgar Wiley Evers International Airport, Jackson, MS</option>
+
+        <!-- Iowa -->
+        <option value="DSM">DSM - Des Moines International Airport, Des Moines, IA</option>
+
+        <!-- Idaho -->
+        <option value="BOI">BOI - Boise Airport, Boise, ID</option>
+
+        <!-- Montana -->
+        <option value="BZN">BZN - Bozeman Yellowstone International Airport, Bozeman, MT</option>
+
+        <!-- Wyoming -->
+        <option value="JAC">JAC - Jackson Hole Airport, Jackson, WY</option>
+
+        <!-- Vermont -->
+        <option value="BTV">BTV - Burlington International Airport, Burlington, VT</option>
+
+        <!-- New Hampshire -->
+        <option value="MHT">MHT - Manchester-Boston Regional Airport, Manchester, NH</option>
+
+        <!-- Rhode Island -->
+        <option value="PVD">PVD - Rhode Island T. F. Green International Airport, Providence, RI</option>
+
+        <!-- Maine -->
+        <option value="PWM">PWM - Portland International Jetport, Portland, ME</option>
+
+        <!-- Delaware -->
+        <option value="ILG">ILG - Wilmington Airport, Wilmington, DE</option>
+
+        <!-- West Virginia -->
+        <option value="CRW">CRW - West Virginia International Yeager Airport, Charleston, WV</option>
+
+        <!-- Kansas -->
+        <option value="ICT">ICT - Wichita Dwight D. Eisenhower National Airport, Wichita, KS</option>
+
+        <!-- Oklahoma -->
+        <option value="TUL">TUL - Tulsa International Airport, Tulsa, OK</option>
+
+        <!-- South Dakota -->
+        <option value="FSD">FSD - Sioux Falls Regional Airport, Sioux Falls, SD</option>
+
+        <!-- North Dakota -->
+        <option value="FAR">FAR - Hector International Airport, Fargo, ND</option>
+
+        <!-- Alaska -->
+        <option value="FAI">FAI - Fairbanks International Airport, Fairbanks, AK</option>
+
+        <!-- Hawaii -->
+        <option value="KOA">KOA - Ellison Onizuka Kona International Airport, Kona, HI</option>
+        <option value="LIH">LIH - Lihue Airport, Lihue, HI</option>
+
+    </select>
+</div>
+
+       <div class="form-group">
+
+                    <label for="from">To Airport</label>
+
+    <select id="from" name="from" required>
+        <option value="">Search airport, city or IATA code</option>
+
+        <!-- United States -->
+        <option value="JFK - John F. Kennedy International Airport, New York, USA">JFK - John F. Kennedy International Airport, New York, USA</option>
+        <option value="LAX - Los Angeles International Airport, Los Angeles, USA">LAX - Los Angeles International Airport, Los Angeles, USA</option>
+        <option value="ORD - O'Hare International Airport, Chicago, USA">ORD - O'Hare International Airport, Chicago, USA</option>
+        <option value="MIA - Miami International Airport, Miami, USA">MIA - Miami International Airport, Miami, USA</option>
+        <option value="ATL - Hartsfield-Jackson Atlanta International Airport, Atlanta, USA">ATL - Hartsfield-Jackson Atlanta International Airport, Atlanta, USA</option>
+        <option value="DFW - Dallas/Fort Worth International Airport, Dallas, USA">DFW - Dallas/Fort Worth International Airport, Dallas, USA</option>
+        <option value="SFO - San Francisco International Airport, San Francisco, USA">SFO - San Francisco International Airport, San Francisco, USA</option>
+
+        <!-- Canada -->
+        <option value="YYZ - Toronto Pearson International Airport, Toronto, Canada">YYZ - Toronto Pearson International Airport, Toronto, Canada</option>
+        <option value="YVR - Vancouver International Airport, Vancouver, Canada">YVR - Vancouver International Airport, Vancouver, Canada</option>
+        <option value="YUL - Montréal-Trudeau International Airport, Montreal, Canada">YUL - Montréal-Trudeau International Airport, Montreal, Canada</option>
+
+        <!-- United Kingdom -->
+        <option value="LHR - London Heathrow Airport, London, UK">LHR - London Heathrow Airport, London, UK</option>
+        <option value="LGW - London Gatwick Airport, London, UK">LGW - London Gatwick Airport, London, UK</option>
+        <option value="MAN - Manchester Airport, Manchester, UK">MAN - Manchester Airport, Manchester, UK</option>
+        <option value="EDI - Edinburgh Airport, Edinburgh, UK">EDI - Edinburgh Airport, Edinburgh, UK</option>
+
+        <!-- France -->
+        <option value="CDG - Charles de Gaulle Airport, Paris, France">CDG - Charles de Gaulle Airport, Paris, France</option>
+        <option value="ORY - Paris Orly Airport, Paris, France">ORY - Paris Orly Airport, Paris, France</option>
+        <option value="NCE - Nice Côte d'Azur Airport, Nice, France">NCE - Nice Côte d'Azur Airport, Nice, France</option>
+
+        <!-- Germany -->
+        <option value="FRA - Frankfurt Airport, Frankfurt, Germany">FRA - Frankfurt Airport, Frankfurt, Germany</option>
+        <option value="MUC - Munich Airport, Munich, Germany">MUC - Munich Airport, Munich, Germany</option>
+        <option value="BER - Berlin Brandenburg Airport, Berlin, Germany">BER - Berlin Brandenburg Airport, Berlin, Germany</option>
+
+        <!-- Netherlands -->
+        <option value="AMS - Amsterdam Schiphol Airport, Amsterdam, Netherlands">AMS - Amsterdam Schiphol Airport, Amsterdam, Netherlands</option>
+
+        <!-- Spain -->
+        <option value="MAD - Adolfo Suárez Madrid-Barajas Airport, Madrid, Spain">MAD - Adolfo Suárez Madrid-Barajas Airport, Madrid, Spain</option>
+        <option value="BCN - Barcelona-El Prat Airport, Barcelona, Spain">BCN - Barcelona-El Prat Airport, Barcelona, Spain</option>
+
+        <!-- Italy -->
+        <option value="FCO - Leonardo da Vinci–Fiumicino Airport, Rome, Italy">FCO - Leonardo da Vinci–Fiumicino Airport, Rome, Italy</option>
+        <option value="MXP - Milan Malpensa Airport, Milan, Italy">MXP - Milan Malpensa Airport, Milan, Italy</option>
+
+        <!-- Switzerland -->
+        <option value="ZRH - Zurich Airport, Zurich, Switzerland">ZRH - Zurich Airport, Zurich, Switzerland</option>
+        <option value="GVA - Geneva Airport, Geneva, Switzerland">GVA - Geneva Airport, Geneva, Switzerland</option>
+
+        <!-- Turkey -->
+        <option value="IST - Istanbul Airport, Istanbul, Turkey">IST - Istanbul Airport, Istanbul, Turkey</option>
+        <option value="SAW - Sabiha Gökçen International Airport, Istanbul, Turkey">SAW - Sabiha Gökçen International Airport, Istanbul, Turkey</option>
+
+        <!-- UAE -->
+        <option value="DXB - Dubai International Airport, Dubai, UAE">DXB - Dubai International Airport, Dubai, UAE</option>
+        <option value="AUH - Zayed International Airport, Abu Dhabi, UAE">AUH - Zayed International Airport, Abu Dhabi, UAE</option>
+        <option value="SHJ - Sharjah International Airport, Sharjah, UAE">SHJ - Sharjah International Airport, Sharjah, UAE</option>
+
+        <!-- Qatar -->
+        <option value="DOH - Hamad International Airport, Doha, Qatar">DOH - Hamad International Airport, Doha, Qatar</option>
+
+        <!-- Saudi Arabia -->
+        <option value="JED - King Abdulaziz International Airport, Jeddah, Saudi Arabia">JED - King Abdulaziz International Airport, Jeddah, Saudi Arabia</option>
+        <option value="RUH - King Khalid International Airport, Riyadh, Saudi Arabia">RUH - King Khalid International Airport, Riyadh, Saudi Arabia</option>
+        <option value="MED - Prince Mohammad bin Abdulaziz International Airport, Medina, Saudi Arabia">MED - Prince Mohammad bin Abdulaziz International Airport, Medina, Saudi Arabia</option>
+
+        <!-- Pakistan -->
+        <option value="LHE - Allama Iqbal International Airport, Lahore, Pakistan">LHE - Allama Iqbal International Airport, Lahore, Pakistan</option>
+        <option value="ISB - Islamabad International Airport, Islamabad, Pakistan">ISB - Islamabad International Airport, Islamabad, Pakistan</option>
+        <option value="KHI - Jinnah International Airport, Karachi, Pakistan">KHI - Jinnah International Airport, Karachi, Pakistan</option>
+        <option value="PEW - Bacha Khan International Airport, Peshawar, Pakistan">PEW - Bacha Khan International Airport, Peshawar, Pakistan</option>
+        <option value="MUX - Multan International Airport, Multan, Pakistan">MUX - Multan International Airport, Multan, Pakistan</option>
+
+        <!-- India -->
+        <option value="DEL - Indira Gandhi International Airport, Delhi, India">DEL - Indira Gandhi International Airport, Delhi, India</option>
+        <option value="BOM - Chhatrapati Shivaji Maharaj International Airport, Mumbai, India">BOM - Chhatrapati Shivaji Maharaj International Airport, Mumbai, India</option>
+        <option value="BLR - Kempegowda International Airport, Bengaluru, India">BLR - Kempegowda International Airport, Bengaluru, India</option>
+        <option value="MAA - Chennai International Airport, Chennai, India">MAA - Chennai International Airport, Chennai, India</option>
+        <option value="HYD - Rajiv Gandhi International Airport, Hyderabad, India">HYD - Rajiv Gandhi International Airport, Hyderabad, India</option>
+
+        <!-- China -->
+        <option value="PEK - Beijing Capital International Airport, Beijing, China">PEK - Beijing Capital International Airport, Beijing, China</option>
+        <option value="PKX - Beijing Daxing International Airport, Beijing, China">PKX - Beijing Daxing International Airport, Beijing, China</option>
+        <option value="PVG - Shanghai Pudong International Airport, Shanghai, China">PVG - Shanghai Pudong International Airport, Shanghai, China</option>
+        <option value="CAN - Guangzhou Baiyun International Airport, Guangzhou, China">CAN - Guangzhou Baiyun International Airport, Guangzhou, China</option>
+
+        <!-- Japan -->
+        <option value="NRT - Narita International Airport, Tokyo, Japan">NRT - Narita International Airport, Tokyo, Japan</option>
+        <option value="HND - Haneda Airport, Tokyo, Japan">HND - Haneda Airport, Tokyo, Japan</option>
+        <option value="KIX - Kansai International Airport, Osaka, Japan">KIX - Kansai International Airport, Osaka, Japan</option>
+
+        <!-- South Korea -->
+        <option value="ICN - Incheon International Airport, Seoul, South Korea">ICN - Incheon International Airport, Seoul, South Korea</option>
+        <option value="GMP - Gimpo International Airport, Seoul, South Korea">GMP - Gimpo International Airport, Seoul, South Korea</option>
+
+        <!-- Singapore -->
+        <option value="SIN - Singapore Changi Airport, Singapore">SIN - Singapore Changi Airport, Singapore</option>
+
+        <!-- Thailand -->
+        <option value="BKK - Suvarnabhumi Airport, Bangkok, Thailand">BKK - Suvarnabhumi Airport, Bangkok, Thailand</option>
+        <option value="DMK - Don Mueang International Airport, Bangkok, Thailand">DMK - Don Mueang International Airport, Bangkok, Thailand</option>
+
+        <!-- Malaysia -->
+        <option value="KUL - Kuala Lumpur International Airport, Kuala Lumpur, Malaysia">KUL - Kuala Lumpur International Airport, Kuala Lumpur, Malaysia</option>
+
+        <!-- Indonesia -->
+        <option value="CGK - Soekarno-Hatta International Airport, Jakarta, Indonesia">CGK - Soekarno-Hatta International Airport, Jakarta, Indonesia</option>
+        <option value="DPS - Ngurah Rai International Airport, Bali, Indonesia">DPS - Ngurah Rai International Airport, Bali, Indonesia</option>
+
+        <!-- Australia -->
+        <option value="SYD - Sydney Kingsford Smith Airport, Sydney, Australia">SYD - Sydney Kingsford Smith Airport, Sydney, Australia</option>
+        <option value="MEL - Melbourne Airport, Melbourne, Australia">MEL - Melbourne Airport, Melbourne, Australia</option>
+        <option value="BNE - Brisbane Airport, Brisbane, Australia">BNE - Brisbane Airport, Brisbane, Australia</option>
+        <option value="PER - Perth Airport, Perth, Australia">PER - Perth Airport, Perth, Australia</option>
+
+        <!-- New Zealand -->
+        <option value="AKL - Auckland Airport, Auckland, New Zealand">AKL - Auckland Airport, Auckland, New Zealand</option>
+        <option value="CHC - Christchurch Airport, Christchurch, New Zealand">CHC - Christchurch Airport, Christchurch, New Zealand</option>
+
+        <!-- South Africa -->
+        <option value="JNB - O.R. Tambo International Airport, Johannesburg, South Africa">JNB - O.R. Tambo International Airport, Johannesburg, South Africa</option>
+        <option value="CPT - Cape Town International Airport, Cape Town, South Africa">CPT - Cape Town International Airport, Cape Town, South Africa</option>
+
+        <!-- Egypt -->
+        <option value="CAI - Cairo International Airport, Cairo, Egypt">CAI - Cairo International Airport, Cairo, Egypt</option>
+
+        <!-- Kenya -->
+        <option value="NBO - Jomo Kenyatta International Airport, Nairobi, Kenya">NBO - Jomo Kenyatta International Airport, Nairobi, Kenya</option>
+
+        <!-- Nigeria -->
+        <option value="LOS - Murtala Muhammed International Airport, Lagos, Nigeria">LOS - Murtala Muhammed International Airport, Lagos, Nigeria</option>
+
+        <!-- Brazil -->
+        <option value="GRU - São Paulo/Guarulhos International Airport, São Paulo, Brazil">GRU - São Paulo/Guarulhos International Airport, São Paulo, Brazil</option>
+        <option value="GIG - Rio de Janeiro/Galeão International Airport, Rio de Janeiro, Brazil">GIG - Rio de Janeiro/Galeão International Airport, Rio de Janeiro, Brazil</option>
+
+        <!-- Argentina -->
+        <option value="EZE - Ministro Pistarini International Airport, Buenos Aires, Argentina">EZE - Ministro Pistarini International Airport, Buenos Aires, Argentina</option>
+
+        <!-- Mexico -->
+        <option value="MEX - Mexico City International Airport, Mexico City, Mexico">MEX - Mexico City International Airport, Mexico City, Mexico</option>
+        <option value="CUN - Cancún International Airport, Cancún, Mexico">CUN - Cancún International Airport, Cancún, Mexico</option>
+
+        <!-- Colombia -->
+        <option value="BOG - El Dorado International Airport, Bogotá, Colombia">BOG - El Dorado International Airport, Bogotá, Colombia</option>
+
+        <!-- Chile -->
+        <option value="SCL - Arturo Merino Benítez International Airport, Santiago, Chile">SCL - Arturo Merino Benítez International Airport, Santiago, Chile</option>
+
+    </select>
+</div>         
+
+
+                <div class="form-group">
+
+                    <label for="departure">
+                        Departure
+                    </label>
+
+                    <input
+                        type="date"
+                        id="departure"
+                        name="Departure Date"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="return">
+                        Return
+                    </label>
+
+                    <input
+                        type="date"
+                        id="return"
+                        name="Return Date"
+                    >
+
+                </div>
+
+            </div>
+
+
+        
+            <!-- Passenger Details -->
+
+            <div
+                class="form-grid"
+                style="margin-top:15px;"
+            >
+
+                <div class="form-group">
+
+                    <label for="passengers">
+                        Passengers
+                    </label>
+
+                    <select
+                        id="passengers"
+                        name="Passengers"
+                    >
+
+                        <option value="1">
+                            1 Passenger
+                        </option>
+
+                        <option value="2">
+                            2 Passengers
+                        </option>
+
+                        <option value="3">
+                            3 Passengers
+                        </option>
+
+                        <option value="4">
+                            4 Passengers
+                        </option>
+
+                        <option value="5">
+                            5 Passengers
+                        </option>
+
+                        <option value="6">
+                            6 Passengers
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="class">
+                        Cabin Class
+                    </label>
+
+                    <select
+                        id="class"
+                        name="Cabin Class"
+                    >
+
+                        <option value="Economy">
+                            Economy
+                        </option>
+
+                        <option value="Premium Economy">
+                            Premium Economy
+                        </option>
+
+                        <option value="Business">
+                            Business
+                        </option>
+
+                        <option value="First Class">
+                            First Class
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                
+
+            </div>
+
+            <!-- Customer Details -->
+
+            <div class="customer-grid">
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="Customer Name"
+                        placeholder="Your full name"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="Phone Number"
+                        placeholder="Phone number"
+                        autocomplete="tel"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="Customer Email"
+                        placeholder="Email address"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+            <!-- FormSubmit Settings -->
+
+            <input
+                type="hidden"
+                name="_subject"
+                value="Meer International Travel"
+            >
+
+            <input
+                type="hidden"
+                name="_template"
+                value="table"
+            >
+
+            <input
+                type="hidden"
+                name="_captcha"
+                value="true"
+            >
+
+
+            <button
+                type="submit"
+                class="search-button"
+            >
+                Search Flights →
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- =========================
+         WHY US
+    ========================== -->
+
+    <section
+        class="section"
+        id="services"
+    >
+
+        <div class="section-header">
+
+            <small>
+                Why Meer International Travel
+            </small>
+
+            <h2>
+                Travel Made Simple
+            </h2>
+
+            <p>
+                Everything you need to start planning
+                your next journey.
+            </p>
+
+        </div>
+
+
+        <div class="features">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🔎
+                </div>
+
+                <h3>
+                    Easy Search
+                </h3>
+
+                <p>
+                    Tell us where you want to go and
+                    when you want to travel.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    Quick Response
+                </h3>
+
+                <p>
+                    Submit your request and our team
+                    can follow up with available options.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📞
+                </div>
+
+                <h3>
+                    Personal Support
+                </h3>
+
+                <p>
+                    Get assistance with your travel
+                    request from our booking team.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         DESTINATIONS
+    ========================== -->
+
+    <section class="travel-about-page">
+
+
+        <div class="section-header">
+
+            <small>
+                Explore World
+            </small>
+
+            <h2>
+                Popular Destinations
+            </h2>
+
+            <p>
+                Discover some of the most popular
+                cities and vacation destinations.
+            </p>
+
+        </div>
+
+
+        
+<style>
+/* =========================================================
+   PREMIUM TRAVEL ABOUT PAGE
+   ========================================================= */
+
+.travel-about-page {
+  --primary: #0a2540;
+  --primary-2: #123d63;
+  --gold: #c6a15b;
+  --gold-light: #e3c98c;
+  --cream: #faf8f3;
+  --light: #f5f7f9;
+  --white: #ffffff;
+  --dark: #17212b;
+  --text: #5e6b78;
+  --border: #e5e9ed;
+
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.8;
+  overflow: hidden;
+}
+
+.travel-about-page *,
+.travel-about-page *::before,
+.travel-about-page *::after {
+  box-sizing: border-box;
+}
+
+.travel-container {
+  width: min(1180px, 92%);
+  margin: auto;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.travel-hero {
+  min-height: 680px;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5, 20, 34, 0.96) 0%,
+      rgba(5, 20, 34, 0.82) 42%,
+      rgba(5, 20, 34, 0.25) 100%
+    ),
+    url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2000&q=90")
+    center/cover no-repeat;
+}
+
+.travel-hero-content {
+  max-width: 760px;
+  padding: 120px 0;
+  color: white;
+}
+
+.travel-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--gold-light);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+.travel-eyebrow::before {
+  content: "";
+  width: 42px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.travel-hero h1 {
+  margin: 0 0 25px;
+  font-size: clamp(45px, 6vw, 76px);
+  line-height: 1.05;
+  letter-spacing: -2px;
+  font-weight: 700;
+}
+
+.travel-hero h1 span {
+  color: var(--gold-light);
+}
+
+.travel-hero p {
+  max-width: 680px;
+  color: rgba(255,255,255,.86);
+  font-size: 18px;
+  margin: 0 0 32px;
+}
+
+.travel-button {
+  display: inline-block;
+  padding: 15px 30px;
+  background: var(--gold);
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 3px;
+  transition: .3s ease;
+}
+
+.travel-button:hover {
+  background: var(--gold-light);
+  transform: translateY(-3px);
+}
+
+/* =========================================================
+   SECTION COMMON
+   ========================================================= */
+
+.travel-section {
+  padding: 105px 0;
+}
+
+.travel-section-light {
+  background: var(--light);
+}
+
+.travel-section-cream {
+  background: var(--cream);
+}
+
+.travel-label {
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  margin-bottom: 14px;
+}
+
+.travel-title {
+  color: var(--primary);
+  font-size: clamp(34px, 4vw, 50px);
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin: 0 0 22px;
+}
+
+.travel-subtitle {
+  max-width: 720px;
+  margin: 0 auto;
+  color: var(--text);
+}
+
+.travel-center {
+  text-align: center;
+}
+
+/* =========================================================
+   COMPANY STORY
+   ========================================================= */
+
+.travel-story-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 75px;
+  align-items: center;
+}
+
+.travel-story-image {
+  position: relative;
+}
+
+.travel-story-image img {
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+  display: block;
+}
+
+.travel-experience-badge {
+  position: absolute;
+  right: -25px;
+  bottom: 35px;
+  width: 175px;
+  padding: 24px 15px;
+  text-align: center;
+  color: white;
+  background: var(--primary);
+  box-shadow: 0 20px 45px rgba(0,0,0,.2);
+}
+
+.travel-experience-badge strong {
+  display: block;
+  color: var(--gold-light);
+  font-size: 35px;
+  line-height: 1;
+}
+
+.travel-experience-badge span {
+  display: block;
+  margin-top: 8px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.travel-story-text p {
+  margin: 0 0 18px;
+}
+
+/* =========================================================
+   MISSION VISION
+   ========================================================= */
+
+.travel-mv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-top: 55px;
+}
+
+.travel-mv-card {
+  padding: 42px;
+  background: white;
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+.travel-mv-number {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  color: rgba(198,161,91,.15);
+  font-size: 70px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.travel-mv-card h3 {
+  color: var(--primary);
+  font-size: 25px;
+  margin: 0 0 15px;
+}
+
+.travel-mv-card p {
+  margin: 0;
+}
+
+/* =========================================================
+   VALUES
+   ========================================================= */
+
+.travel-values-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 24px;
+  margin-top: 55px;
+}
+
+.travel-value-card {
+  background: white;
+  padding: 38px 30px;
+  border: 1px solid var(--border);
+  transition: .3s ease;
+}
+
+.travel-value-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 18px 45px rgba(10,37,64,.1);
+  border-color: var(--gold-light);
+}
+
+.travel-icon {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  color: var(--gold);
+  background: rgba(198,161,91,.12);
+  font-size: 25px;
+}
+
+.travel-value-card h3 {
+  color: var(--primary);
+  font-size: 20px;
+  margin: 0 0 12px;
+}
+
+.travel-value-card p {
+  margin: 0;
+  font-size: 15px;
+}
+
+/* =========================================================
+   SERVICES
+   ========================================================= */
+
+.travel-services-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 20px;
+  margin-top: 55px;
+}
+
+.travel-service {
+  min-height: 250px;
+  padding: 30px 25px;
+  color: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+.travel-service::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    transparent 20%,
+    rgba(5,20,34,.9)
+  );
+}
+
+.travel-service-content {
+  position: relative;
+  z-index: 2;
+}
+
+.travel-service h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.travel-service p {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255,255,255,.78);
+}
+
+/* =========================================================
+   APPROACH
+   ========================================================= */
+
+.travel-approach-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.travel-approach-image {
+  width: 100%;
+  height: 530px;
+  object-fit: cover;
+}
+
+.travel-check-list {
+  padding: 0;
+  margin: 30px 0 0;
+  list-style: none;
+}
+
+.travel-check-list li {
+  position: relative;
+  padding: 0 0 16px 32px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+  color: var(--primary-2);
+}
+
+.travel-check-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: bold;
+}
+
+/* =========================================================
+   DESTINATIONS
+   ========================================================= */
+
+.travel-destination-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+  margin-top: 55px;
+}
+
+.travel-destination {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.travel-destination img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+
+.travel-destination:hover img {
+  transform: scale(1.08);
+}
+
+.travel-destination-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 25px;
+  color: white;
+  background: linear-gradient(
+    transparent 35%,
+    rgba(0,0,0,.8)
+  );
+}
+
+.travel-destination-overlay h3 {
+  margin: 0;
+  font-size: 23px;
+}
+
+/* =========================================================
+   PROCESS
+   ========================================================= */
+
+.travel-process {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 30px;
+  margin-top: 55px;
+}
+
+.travel-process-item {
+  text-align: center;
+  position: relative;
+}
+
+.travel-process-number {
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 20px;
+  border: 1px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.travel-process-item h3 {
+  color: var(--primary);
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.travel-process-item p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* =========================================================
+   STATISTICS
+   ========================================================= */
+
+.travel-stats {
+  padding: 70px 0;
+  background: var(--primary);
+  color: white;
+}
+
+.travel-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  text-align: center;
+}
+
+.travel-stat {
+  border-right: 1px solid rgba(255,255,255,.15);
+  padding: 10px 20px;
+}
+
+.travel-stat:last-child {
+  border-right: none;
+}
+
+.travel-stat strong {
+  display: block;
+  color: var(--gold-light);
+  font-size: 43px;
+  line-height: 1.2;
+}
+
+.travel-stat span {
+  color: rgba(255,255,255,.7);
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+}
+
+/* =========================================================
+   TESTIMONIALS
+   ========================================================= */
+
+.travel-testimonials {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 25px;
+  margin-top: 55px;
+}
+
+.travel-testimonial {
+  padding: 35px;
+  background: white;
+  border: 1px solid var(--border);
+}
+
+.travel-stars {
+  color: var(--gold);
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+}
+
+.travel-testimonial p {
+  font-style: italic;
+  margin: 0 0 22px;
+}
+
+.travel-client {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* =========================================================
+   MISSION BANNER
+   ========================================================= */
+
+.travel-mission-banner {
+  padding: 110px 20px;
+  color: white;
+  text-align: center;
+
+  background:
+    linear-gradient(
+      rgba(7,25,42,.91),
+      rgba(7,25,42,.91)
+    ),
+    url("https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=2000&q=90")
+    center/cover no-repeat;
+}
+
+.travel-mission-inner {
+  max-width: 850px;
+  margin: auto;
+}
+
+.travel-mission-banner h2 {
+  margin: 0 0 22px;
+  font-size: clamp(35px,5vw,55px);
+  line-height: 1.15;
+}
+
+.travel-mission-banner p {
+  margin: 0;
+  color: rgba(255,255,255,.78);
+  font-size: 17px;
+}
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.travel-final-cta {
+  padding: 90px 20px;
+  text-align: center;
+}
+
+.travel-final-cta h2 {
+  margin: 0 0 15px;
+  color: var(--primary);
+  font-size: clamp(34px,4vw,48px);
+}
+
+.travel-final-cta p {
+  max-width: 680px;
+  margin: 0 auto 30px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width: 950px) {
+
+  .travel-story-grid,
+  .travel-approach-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .travel-values-grid,
+  .travel-testimonials {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .travel-services-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .travel-destination-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .travel-process {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .travel-stat-grid {
+    grid-template-columns: repeat(2,1fr);
+    gap: 30px 0;
+  }
+
+  .travel-stat:nth-child(2) {
+    border-right: none;
+  }
+}
+
+@media(max-width: 650px) {
+
+  .travel-section {
+    padding: 70px 0;
+  }
+
+  .travel-hero {
+    min-height: 600px;
+  }
+
+  .travel-hero-content {
+    padding: 80px 0;
+  }
+
+  .travel-hero h1 {
+    letter-spacing: -1px;
+  }
+
+  .travel-story-grid,
+  .travel-approach-grid,
+  .travel-mv-grid,
+  .travel-values-grid,
+  .travel-services-grid,
+  .travel-destination-grid,
+  .travel-process,
+  .travel-testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  .travel-story-image img,
+  .travel-approach-image {
+    height: 390px;
+  }
+
+  .travel-experience-badge {
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .travel-stat-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .travel-stat {
+    border-right: none;
+  }
+
+  .travel-mission-banner {
+    padding: 75px 20px;
+  }
+}
+</style>
+<div class="travel-destination">
+        <img src="https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?auto=format&fit=crop&w=1200&q=90" alt="New York">
+        <div class="travel-destination-overlay">
+          <div>
+            <h3>New York</h3>
+            <span>USA • Iconic City Life</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="travel-destination">
+        <img src="https://images.unsplash.com/photo-1515895309288-a3815ab7cf81?auto=format&fit=crop&w=1200&q=90" alt="Los Angeles">
+        <div class="travel-destination-overlay">
+          <div>
+            <h3>Los Angeles</h3>
+            <span>USA • Entertainment & Beaches</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="travel-destination">
+        <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?auto=format&fit=crop&w=1200&q=90" alt="Toronto">
+        <div class="travel-destination-overlay">
+          <div>
+            <h3>Toronto</h3>
+            <span>Canada • Modern Multicultural City</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="travel-destination">
+        <img src="https://images.unsplash.com/photo-1507992781348-310259076fe0?auto=format&fit=crop&w=1200&q=90" alt="Vancouver">
+        <div class="travel-destination-overlay">
+          <div>
+            <h3>Vancouver</h3>
+            <span>Canada • Mountains & Ocean</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="travel-destination">
+        <img src="https://images.unsplash.com/photo-1501466044931-62695aada8e9?auto=format&fit=crop&w=1200&q=90" alt="Mexico City">
+        <div class="travel-destination-overlay">
+          <div>
+            <h3>Mexico City</h3>
+            <span>Mexico • Culture & Heritage</span>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ===================== SOUTH AMERICA ===================== -->
+
+      <div class="travel-destination">
+        <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1200&q=90" alt="Rio de Janeiro">
+        <div class="travel-destination-overlay">
+          <div>
+            <h3>Rio de Janeiro</h3>
+            <span>Brazil • Beaches & Carnival</span>
+          </div>
+        </div>
+      </div>
+      </div>
+
+  </div>
+
+</section>
+
+
+    <!-- =========================
+         CTA
+    ========================== -->
+
+    <section
+        class="cta"
+        id="contact"
+    >
+
+        <h2>
+            Ready to Start Your Journey?
+        </h2>
+
+        <p>
+            Submit your flight request and
+            let us help you plan your trip.
+        </p>
+
+        <a href="#booking">
+            Search Flights
+        </a>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+
+                <h3>
+                    ✈ Meer International Travel
+                </h3>
+
+                <p>
+                    Phone# +1 234 567 9793 <br>
+                    Email: info@meerinternationaltravel.com
+                </p>
+
+                <p>
+                    A modern travel booking website
+                    for submitting flight requests
+                    and exploring destinations.
+                </p>
+
+            </div>
+
+
+            <!-- QUICK NAVIGATION -->
+
+            <div class="footer-navigation">
+
+                <h4>
+                    Quick Navigation
+                </h4>
+
+                <div class="footer-links">
+
+                    <a href="index.html">
+                        Home
+                    </a>
+
+                    <a href="destination.html">
+                        Destinations
+                    </a>
+
+                    <a href="whyus.html">
+                        Why Us
+                    </a>
+
+                    <a href="#booking">
+                        Book Flight
+                    </a>
+
+                    <a href="contact.html">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            © 2026 Meer International Travel. All rights reserved.
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         MOBILE NAVIGATION SCRIPT
+    ========================== -->
+
+    <script>
+
+        const menuToggle = document.getElementById("menuToggle");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const mobileLinks = document.querySelectorAll(".mobile-link");
+
+        menuToggle.addEventListener("click", function () {
+
+            mobileMenu.classList.toggle("active");
+
+            if (mobileMenu.classList.contains("active")) {
+                menuToggle.innerHTML = "✕";
+                menuToggle.setAttribute("aria-label", "Close navigation menu");
+            } else {
+                menuToggle.innerHTML = "☰";
+                menuToggle.setAttribute("aria-label", "Open navigation menu");
+            }
+
+        });
+
+
+        /* Close menu after clicking a link */
+
+        mobileLinks.forEach(function(link) {
+
+            link.addEventListener("click", function() {
+
+                mobileMenu.classList.remove("active");
+
+                menuToggle.innerHTML = "☰";
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open navigation menu"
+                );
+
+            });
+
+        });
+
+
+        /* Close menu when clicking outside */
+
+        document.addEventListener("click", function(event) {
+
+            if (
+                !mobileMenu.contains(event.target) &&
+                !menuToggle.contains(event.target)
+            ) {
+
+                mobileMenu.classList.remove("active");
+
+                menuToggle.innerHTML = "☰";
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open navigation menu"
+                );
+
+            }
+
+        });
+
+    </script>
+
+
+</body>
+</html>
