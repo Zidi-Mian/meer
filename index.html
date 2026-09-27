@@ -963,22 +963,20 @@
     </section>
 
 
-    <!-- =========================
-         BOOKING FORM
-    ========================== -->
+   <form action="https://formsubmit.co/info@meerinternationaltravel.com" method="post"
+    style="
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 30px;
+        background: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+        font-family: Arial, sans-serif;
+        color: #222;
+        box-sizing: border-box;
+    ">
 
-    <div
-        class="booking-wrapper"
-        id="booking"
-    >
-
-        <form
-            class="booking-card"
-            action="https://formsubmit.co/YOUR-EMAIL@example.com"
-            method="POST"
-        >
-
-            <div class="booking-header">
+    <div class="booking-header">
 
                 <h2>
                     ✈ Search & Request a Flight
@@ -991,607 +989,1077 @@
             </div>
 
 
-            <!-- Trip Type -->
+    <!-- Route Section -->
+    <div style="
+        margin-bottom: 25px;
+        padding: 20px;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        background: #f8fafc;
+    ">
 
-            <div class="trip-type">
+        <h3 style="
+            margin: 0 0 18px;
+            font-size: 18px;
+            color: #123c69;
+        ">
+            Route
+        </h3>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="Trip Type"
-                        value="Round Trip"
-                        checked
-                    >
-                    Round Trip
-                </label>
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        ">
 
-                <label>
-                    <input
-                        type="radio"
-                        name="Trip Type"
-                        value="One Way"
-                    >
-                    One Way
-                </label>
+            <!-- From Airport -->
+<div>
+    <label for="fromAirport" style="
+        display: block;
+        margin-bottom: 7px;
+        font-weight: 600;
+        font-size: 14px;
+    ">
+        From Airport
+    </label>
 
-            </div>
+    <input
+        type="text"
+        id="fromAirport"
+        name="from_airport"
+        placeholder="Search USA departure airport..."
+        list="fromAirports"
+        required
+        style="
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+            box-sizing: border-box;
+        "
+    >
 
-
-            <!-- Flight Details -->
-
-            <div class="form-grid">
-
-                <div class="form-group">
-
-                    <label for="from">From Airport</label>
-
-    <select id="from" name="from" required>
-        <option value="">Select Departure Airport</option>
+    <datalist id="fromAirports">
 
         <!-- New York -->
-        <option value="JFK">JFK - John F. Kennedy International Airport, New York, NY</option>
-        <option value="LGA">LGA - LaGuardia Airport, New York, NY</option>
-        <option value="EWR">EWR - Newark Liberty International Airport, Newark, NJ</option>
+        <option value="John F. Kennedy International Airport - New York (JFK)">
+        <option value="Newark Liberty International Airport - Newark (EWR)">
+        <option value="LaGuardia Airport - New York (LGA)">
 
-        <!-- California -->
-        <option value="LAX">LAX - Los Angeles International Airport, Los Angeles, CA</option>
-        <option value="SFO">SFO - San Francisco International Airport, San Francisco, CA</option>
-        <option value="SAN">SAN - San Diego International Airport, San Diego, CA</option>
-        <option value="SJC">SJC - San José Mineta International Airport, San Jose, CA</option>
-        <option value="OAK">OAK - Oakland International Airport, Oakland, CA</option>
-        <option value="SMF">SMF - Sacramento International Airport, Sacramento, CA</option>
+        <!-- Los Angeles -->
+        <option value="Los Angeles International Airport - Los Angeles (LAX)">
+        <option value="Hollywood Burbank Airport - Burbank (BUR)">
+        <option value="Long Beach Airport - Long Beach (LGB)">
 
-        <!-- Florida -->
-        <option value="MIA">MIA - Miami International Airport, Miami, FL</option>
-        <option value="FLL">FLL - Fort Lauderdale-Hollywood International Airport, Fort Lauderdale, FL</option>
-        <option value="MCO">MCO - Orlando International Airport, Orlando, FL</option>
-        <option value="TPA">TPA - Tampa International Airport, Tampa, FL</option>
-        <option value="JAX">JAX - Jacksonville International Airport, Jacksonville, FL</option>
-        <option value="RSW">RSW - Southwest Florida International Airport, Fort Myers, FL</option>
-        <option value="PBI">PBI - Palm Beach International Airport, West Palm Beach, FL</option>
+        <!-- Chicago -->
+        <option value="Chicago O'Hare International Airport - Chicago (ORD)">
+        <option value="Chicago Midway International Airport - Chicago (MDW)">
 
-        <!-- Texas -->
-        <option value="DFW">DFW - Dallas/Fort Worth International Airport, Dallas, TX</option>
-        <option value="IAH">IAH - George Bush Intercontinental Airport, Houston, TX</option>
-        <option value="HOU">HOU - William P. Hobby Airport, Houston, TX</option>
-        <option value="AUS">AUS - Austin-Bergstrom International Airport, Austin, TX</option>
-        <option value="SAT">SAT - San Antonio International Airport, San Antonio, TX</option>
-
-        <!-- Illinois -->
-        <option value="ORD">ORD - O'Hare International Airport, Chicago, IL</option>
-        <option value="MDW">MDW - Midway International Airport, Chicago, IL</option>
-
-        <!-- Georgia -->
-        <option value="ATL">ATL - Hartsfield-Jackson Atlanta International Airport, Atlanta, GA</option>
-        <option value="SAV">SAV - Savannah/Hilton Head International Airport, Savannah, GA</option>
-
-        <!-- Colorado -->
-        <option value="DEN">DEN - Denver International Airport, Denver, CO</option>
-        <option value="COS">COS - Colorado Springs Airport, Colorado Springs, CO</option>
-
-        <!-- Washington -->
-        <option value="SEA">SEA - Seattle-Tacoma International Airport, Seattle, WA</option>
-        <option value="GEG">GEG - Spokane International Airport, Spokane, WA</option>
-
-        <!-- Massachusetts -->
-        <option value="BOS">BOS - Boston Logan International Airport, Boston, MA</option>
-
-        <!-- Nevada -->
-        <option value="LAS">LAS - Harry Reid International Airport, Las Vegas, NV</option>
-        <option value="RNO">RNO - Reno-Tahoe International Airport, Reno, NV</option>
-
-        <!-- Arizona -->
-        <option value="PHX">PHX - Phoenix Sky Harbor International Airport, Phoenix, AZ</option>
-        <option value="TUS">TUS - Tucson International Airport, Tucson, AZ</option>
-
-        <!-- Pennsylvania -->
-        <option value="PHL">PHL - Philadelphia International Airport, Philadelphia, PA</option>
-        <option value="PIT">PIT - Pittsburgh International Airport, Pittsburgh, PA</option>
-
-        <!-- Michigan -->
-        <option value="DTW">DTW - Detroit Metropolitan Airport, Detroit, MI</option>
-        <option value="GRR">GRR - Gerald R. Ford International Airport, Grand Rapids, MI</option>
-
-        <!-- Minnesota -->
-        <option value="MSP">MSP - Minneapolis-Saint Paul International Airport, Minneapolis, MN</option>
-
-        <!-- North Carolina -->
-        <option value="CLT">CLT - Charlotte Douglas International Airport, Charlotte, NC</option>
-        <option value="RDU">RDU - Raleigh-Durham International Airport, Raleigh, NC</option>
-
-        <!-- New Jersey -->
-        <option value="ACY">ACY - Atlantic City International Airport, Atlantic City, NJ</option>
-
-        <!-- Maryland -->
-        <option value="BWI">BWI - Baltimore/Washington International Airport, Baltimore, MD</option>
+        <!-- San Francisco -->
+        <option value="San Francisco International Airport - San Francisco (SFO)">
+        <option value="Oakland International Airport - Oakland (OAK)">
+        <option value="San Jose Mineta International Airport - San Jose (SJC)">
 
         <!-- Washington DC -->
-        <option value="DCA">DCA - Ronald Reagan Washington National Airport, Washington, DC</option>
-        <option value="IAD">IAD - Washington Dulles International Airport, Dulles, VA</option>
+        <option value="Washington Dulles International Airport - Washington DC (IAD)">
+        <option value="Ronald Reagan Washington National Airport - Washington DC (DCA)">
+        <option value="Baltimore/Washington International Airport - Baltimore (BWI)">
 
-        <!-- Oregon -->
-        <option value="PDX">PDX - Portland International Airport, Portland, OR</option>
+        <!-- Miami -->
+        <option value="Miami International Airport - Miami (MIA)">
+        <option value="Fort Lauderdale-Hollywood International Airport - Fort Lauderdale (FLL)">
+        <option value="Palm Beach International Airport - West Palm Beach (PBI)">
 
-        <!-- Missouri -->
-        <option value="STL">STL - St. Louis Lambert International Airport, St. Louis, MO</option>
-        <option value="MCI">MCI - Kansas City International Airport, Kansas City, MO</option>
+        <!-- Texas -->
+        <option value="Dallas/Fort Worth International Airport - Dallas (DFW)">
+        <option value="Dallas Love Field - Dallas (DAL)">
+        <option value="George Bush Intercontinental Airport - Houston (IAH)">
+        <option value="William P. Hobby Airport - Houston (HOU)">
+        <option value="Austin-Bergstrom International Airport - Austin (AUS)">
+        <option value="San Antonio International Airport - San Antonio (SAT)">
 
-        <!-- Tennessee -->
-        <option value="BNA">BNA - Nashville International Airport, Nashville, TN</option>
-        <option value="MEM">MEM - Memphis International Airport, Memphis, TN</option>
+        <!-- Atlanta -->
+        <option value="Hartsfield-Jackson Atlanta International Airport - Atlanta (ATL)">
+
+        <!-- Boston -->
+        <option value="Boston Logan International Airport - Boston (BOS)">
+
+        <!-- Seattle -->
+        <option value="Seattle-Tacoma International Airport - Seattle (SEA)">
+
+        <!-- Denver -->
+        <option value="Denver International Airport - Denver (DEN)">
+
+        <!-- Las Vegas -->
+        <option value="Harry Reid International Airport - Las Vegas (LAS)">
+
+        <!-- Phoenix -->
+        <option value="Phoenix Sky Harbor International Airport - Phoenix (PHX)">
+
+        <!-- Philadelphia -->
+        <option value="Philadelphia International Airport - Philadelphia (PHL)">
+
+        <!-- Detroit -->
+        <option value="Detroit Metropolitan Wayne County Airport - Detroit (DTW)">
+
+        <!-- Minneapolis -->
+        <option value="Minneapolis-Saint Paul International Airport - Minneapolis (MSP)">
+
+        <!-- Charlotte -->
+        <option value="Charlotte Douglas International Airport - Charlotte (CLT)">
+
+        <!-- Orlando -->
+        <option value="Orlando International Airport - Orlando (MCO)">
+        <option value="Orlando Sanford International Airport - Orlando (SFB)">
+
+        <!-- Tampa -->
+        <option value="Tampa International Airport - Tampa (TPA)">
+
+        <!-- Philadelphia / Pennsylvania -->
+        <option value="Pittsburgh International Airport - Pittsburgh (PIT)">
+
+        <!-- North Carolina -->
+        <option value="Raleigh-Durham International Airport - Raleigh (RDU)">
+
+        <!-- Massachusetts -->
+        <option value="Worcester Regional Airport - Worcester (ORH)">
 
         <!-- Ohio -->
-        <option value="CLE">CLE - Cleveland Hopkins International Airport, Cleveland, OH</option>
-        <option value="CMH">CMH - John Glenn Columbus International Airport, Columbus, OH</option>
-        <option value="CVG">CVG - Cincinnati/Northern Kentucky International Airport, Cincinnati, OH</option>
+        <option value="Cleveland Hopkins International Airport - Cleveland (CLE)">
+        <option value="John Glenn Columbus International Airport - Columbus (CMH)">
+        <option value="Cincinnati/Northern Kentucky International Airport - Cincinnati (CVG)">
+
+        <!-- Missouri -->
+        <option value="St. Louis Lambert International Airport - St. Louis (STL)">
+        <option value="Kansas City International Airport - Kansas City (MCI)">
+
+        <!-- Tennessee -->
+        <option value="Nashville International Airport - Nashville (BNA)">
+        <option value="Memphis International Airport - Memphis (MEM)">
 
         <!-- Louisiana -->
-        <option value="MSY">MSY - Louis Armstrong New Orleans International Airport, New Orleans, LA</option>
+        <option value="Louis Armstrong New Orleans International Airport - New Orleans (MSY)">
 
-        <!-- Hawaii -->
-        <option value="HNL">HNL - Daniel K. Inouye International Airport, Honolulu, HI</option>
-        <option value="OGG">OGG - Kahului Airport, Maui, HI</option>
+        <!-- Colorado -->
+        <option value="Colorado Springs Airport - Colorado Springs (COS)">
 
-        <!-- Alaska -->
-        <option value="ANC">ANC - Ted Stevens Anchorage International Airport, Anchorage, AK</option>
+        <!-- Arizona -->
+        <option value="Tucson International Airport - Tucson (TUS)">
+
+        <!-- Nevada -->
+        <option value="Reno-Tahoe International Airport - Reno (RNO)">
+
+        <!-- Oregon -->
+        <option value="Portland International Airport - Portland (PDX)">
 
         <!-- Utah -->
-        <option value="SLC">SLC - Salt Lake City International Airport, Salt Lake City, UT</option>
+        <option value="Salt Lake City International Airport - Salt Lake City (SLC)">
 
-        <!-- Virginia -->
-        <option value="RIC">RIC - Richmond International Airport, Richmond, VA</option>
-
-        <!-- Indiana -->
-        <option value="IND">IND - Indianapolis International Airport, Indianapolis, IN</option>
-
-        <!-- Wisconsin -->
-        <option value="MKE">MKE - Milwaukee Mitchell International Airport, Milwaukee, WI</option>
-
-        <!-- Connecticut -->
-        <option value="BDL">BDL - Bradley International Airport, Hartford, CT</option>
-
-        <!-- Oklahoma -->
-        <option value="OKC">OKC - Will Rogers World Airport, Oklahoma City, OK</option>
-
-        <!-- Nebraska -->
-        <option value="OMA">OMA - Eppley Airfield, Omaha, NE</option>
-
-        <!-- New Mexico -->
-        <option value="ABQ">ABQ - Albuquerque International Sunport, Albuquerque, NM</option>
-
-        <!-- Kentucky -->
-        <option value="LEX">LEX - Blue Grass Airport, Lexington, KY</option>
-        <option value="SDF">SDF - Louisville Muhammad Ali International Airport, Louisville, KY</option>
-
-        <!-- South Carolina -->
-        <option value="CHS">CHS - Charleston International Airport, Charleston, SC</option>
-        <option value="GSP">GSP - Greenville-Spartanburg International Airport, Greenville, SC</option>
-
-        <!-- Alabama -->
-        <option value="BHM">BHM - Birmingham-Shuttlesworth International Airport, Birmingham, AL</option>
-
-        <!-- Arkansas -->
-        <option value="LIT">LIT - Bill and Hillary Clinton National Airport, Little Rock, AR</option>
-
-        <!-- Mississippi -->
-        <option value="JAN">JAN - Jackson-Medgar Wiley Evers International Airport, Jackson, MS</option>
-
-        <!-- Iowa -->
-        <option value="DSM">DSM - Des Moines International Airport, Des Moines, IA</option>
-
-        <!-- Idaho -->
-        <option value="BOI">BOI - Boise Airport, Boise, ID</option>
-
-        <!-- Montana -->
-        <option value="BZN">BZN - Bozeman Yellowstone International Airport, Bozeman, MT</option>
-
-        <!-- Wyoming -->
-        <option value="JAC">JAC - Jackson Hole Airport, Jackson, WY</option>
-
-        <!-- Vermont -->
-        <option value="BTV">BTV - Burlington International Airport, Burlington, VT</option>
-
-        <!-- New Hampshire -->
-        <option value="MHT">MHT - Manchester-Boston Regional Airport, Manchester, NH</option>
-
-        <!-- Rhode Island -->
-        <option value="PVD">PVD - Rhode Island T. F. Green International Airport, Providence, RI</option>
-
-        <!-- Maine -->
-        <option value="PWM">PWM - Portland International Jetport, Portland, ME</option>
-
-        <!-- Delaware -->
-        <option value="ILG">ILG - Wilmington Airport, Wilmington, DE</option>
-
-        <!-- West Virginia -->
-        <option value="CRW">CRW - West Virginia International Yeager Airport, Charleston, WV</option>
-
-        <!-- Kansas -->
-        <option value="ICT">ICT - Wichita Dwight D. Eisenhower National Airport, Wichita, KS</option>
-
-        <!-- Oklahoma -->
-        <option value="TUL">TUL - Tulsa International Airport, Tulsa, OK</option>
-
-        <!-- South Dakota -->
-        <option value="FSD">FSD - Sioux Falls Regional Airport, Sioux Falls, SD</option>
-
-        <!-- North Dakota -->
-        <option value="FAR">FAR - Hector International Airport, Fargo, ND</option>
-
-        <!-- Alaska -->
-        <option value="FAI">FAI - Fairbanks International Airport, Fairbanks, AK</option>
+        <!-- Maryland -->
+        <option value="Baltimore/Washington International Airport - Baltimore (BWI)">
 
         <!-- Hawaii -->
-        <option value="KOA">KOA - Ellison Onizuka Kona International Airport, Kona, HI</option>
-        <option value="LIH">LIH - Lihue Airport, Lihue, HI</option>
+        <option value="Daniel K. Inouye International Airport - Honolulu (HNL)">
+        <option value="Kahului Airport - Maui (OGG)">
+        <option value="Ellison Onizuka Kona International Airport - Kona (KOA)">
 
-    </select>
+        <!-- Alaska -->
+        <option value="Ted Stevens Anchorage International Airport - Anchorage (ANC)">
+
+        <!-- Other Major Airports -->
+        <option value="Indianapolis International Airport - Indianapolis (IND)">
+        <option value="Nashville International Airport - Nashville (BNA)">
+        <option value="Sacramento International Airport - Sacramento (SMF)">
+        <option value="San Diego International Airport - San Diego (SAN)">
+        <option value="Ontario International Airport - Ontario (ONT)">
+        <option value="John Wayne Airport - Orange County (SNA)">
+        <option value="Jacksonville International Airport - Jacksonville (JAX)">
+        <option value="Cleveland Hopkins International Airport - Cleveland (CLE)">
+        <option value="Milwaukee Mitchell International Airport - Milwaukee (MKE)">
+        <option value="Omaha Eppley Airfield - Omaha (OMA)">
+        <option value="Albuquerque International Sunport - Albuquerque (ABQ)">
+        <option value="El Paso International Airport - El Paso (ELP)">
+        <option value="Boise Airport - Boise (BOI)">
+        <option value="Richmond International Airport - Richmond (RIC)">
+        <option value="Norfolk International Airport - Norfolk (ORF)">
+        <option value="Savannah/Hilton Head International Airport - Savannah (SAV)">
+        <option value="Charleston International Airport - Charleston (CHS)">
+        <option value="Greenville-Spartanburg International Airport - Greenville (GSP)">
+        <option value="Birmingham-Shuttlesworth International Airport - Birmingham (BHM)">
+        <option value="Jackson-Medgar Wiley Evers International Airport - Jackson (JAN)">
+        <option value="Little Rock Clinton National Airport - Little Rock (LIT)">
+        <option value="Oklahoma City Will Rogers International Airport - Oklahoma City (OKC)">
+        <option value="Tulsa International Airport - Tulsa (TUL)">
+        <option value="Des Moines International Airport - Des Moines (DSM)">
+        <option value="Cedar Rapids Airport - Cedar Rapids (CID)">
+        <option value="Buffalo Niagara International Airport - Buffalo (BUF)">
+        <option value="Rochester International Airport - Rochester (ROC)">
+        <option value="Syracuse Hancock International Airport - Syracuse (SYR)">
+        <option value="Albany International Airport - Albany (ALB)">
+        <option value="Hartford Bradley International Airport - Hartford (BDL)">
+        <option value="Providence T.F. Green International Airport - Providence (PVD)">
+        <option value="Manchester-Boston Regional Airport - Manchester (MHT)">
+
+    </datalist>
 </div>
 
-       <div class="form-group">
-
-                    <label for="from">To Airport</label>
-
-    <select id="from" name="from" required>
-        <option value="">Search airport, city or IATA code</option>
-
-        <!-- United States -->
-        <option value="JFK - John F. Kennedy International Airport, New York, USA">JFK - John F. Kennedy International Airport, New York, USA</option>
-        <option value="LAX - Los Angeles International Airport, Los Angeles, USA">LAX - Los Angeles International Airport, Los Angeles, USA</option>
-        <option value="ORD - O'Hare International Airport, Chicago, USA">ORD - O'Hare International Airport, Chicago, USA</option>
-        <option value="MIA - Miami International Airport, Miami, USA">MIA - Miami International Airport, Miami, USA</option>
-        <option value="ATL - Hartsfield-Jackson Atlanta International Airport, Atlanta, USA">ATL - Hartsfield-Jackson Atlanta International Airport, Atlanta, USA</option>
-        <option value="DFW - Dallas/Fort Worth International Airport, Dallas, USA">DFW - Dallas/Fort Worth International Airport, Dallas, USA</option>
-        <option value="SFO - San Francisco International Airport, San Francisco, USA">SFO - San Francisco International Airport, San Francisco, USA</option>
-
-        <!-- Canada -->
-        <option value="YYZ - Toronto Pearson International Airport, Toronto, Canada">YYZ - Toronto Pearson International Airport, Toronto, Canada</option>
-        <option value="YVR - Vancouver International Airport, Vancouver, Canada">YVR - Vancouver International Airport, Vancouver, Canada</option>
-        <option value="YUL - Montréal-Trudeau International Airport, Montreal, Canada">YUL - Montréal-Trudeau International Airport, Montreal, Canada</option>
-
-        <!-- United Kingdom -->
-        <option value="LHR - London Heathrow Airport, London, UK">LHR - London Heathrow Airport, London, UK</option>
-        <option value="LGW - London Gatwick Airport, London, UK">LGW - London Gatwick Airport, London, UK</option>
-        <option value="MAN - Manchester Airport, Manchester, UK">MAN - Manchester Airport, Manchester, UK</option>
-        <option value="EDI - Edinburgh Airport, Edinburgh, UK">EDI - Edinburgh Airport, Edinburgh, UK</option>
-
-        <!-- France -->
-        <option value="CDG - Charles de Gaulle Airport, Paris, France">CDG - Charles de Gaulle Airport, Paris, France</option>
-        <option value="ORY - Paris Orly Airport, Paris, France">ORY - Paris Orly Airport, Paris, France</option>
-        <option value="NCE - Nice Côte d'Azur Airport, Nice, France">NCE - Nice Côte d'Azur Airport, Nice, France</option>
-
-        <!-- Germany -->
-        <option value="FRA - Frankfurt Airport, Frankfurt, Germany">FRA - Frankfurt Airport, Frankfurt, Germany</option>
-        <option value="MUC - Munich Airport, Munich, Germany">MUC - Munich Airport, Munich, Germany</option>
-        <option value="BER - Berlin Brandenburg Airport, Berlin, Germany">BER - Berlin Brandenburg Airport, Berlin, Germany</option>
-
-        <!-- Netherlands -->
-        <option value="AMS - Amsterdam Schiphol Airport, Amsterdam, Netherlands">AMS - Amsterdam Schiphol Airport, Amsterdam, Netherlands</option>
-
-        <!-- Spain -->
-        <option value="MAD - Adolfo Suárez Madrid-Barajas Airport, Madrid, Spain">MAD - Adolfo Suárez Madrid-Barajas Airport, Madrid, Spain</option>
-        <option value="BCN - Barcelona-El Prat Airport, Barcelona, Spain">BCN - Barcelona-El Prat Airport, Barcelona, Spain</option>
-
-        <!-- Italy -->
-        <option value="FCO - Leonardo da Vinci–Fiumicino Airport, Rome, Italy">FCO - Leonardo da Vinci–Fiumicino Airport, Rome, Italy</option>
-        <option value="MXP - Milan Malpensa Airport, Milan, Italy">MXP - Milan Malpensa Airport, Milan, Italy</option>
-
-        <!-- Switzerland -->
-        <option value="ZRH - Zurich Airport, Zurich, Switzerland">ZRH - Zurich Airport, Zurich, Switzerland</option>
-        <option value="GVA - Geneva Airport, Geneva, Switzerland">GVA - Geneva Airport, Geneva, Switzerland</option>
-
-        <!-- Turkey -->
-        <option value="IST - Istanbul Airport, Istanbul, Turkey">IST - Istanbul Airport, Istanbul, Turkey</option>
-        <option value="SAW - Sabiha Gökçen International Airport, Istanbul, Turkey">SAW - Sabiha Gökçen International Airport, Istanbul, Turkey</option>
-
-        <!-- UAE -->
-        <option value="DXB - Dubai International Airport, Dubai, UAE">DXB - Dubai International Airport, Dubai, UAE</option>
-        <option value="AUH - Zayed International Airport, Abu Dhabi, UAE">AUH - Zayed International Airport, Abu Dhabi, UAE</option>
-        <option value="SHJ - Sharjah International Airport, Sharjah, UAE">SHJ - Sharjah International Airport, Sharjah, UAE</option>
-
-        <!-- Qatar -->
-        <option value="DOH - Hamad International Airport, Doha, Qatar">DOH - Hamad International Airport, Doha, Qatar</option>
-
-        <!-- Saudi Arabia -->
-        <option value="JED - King Abdulaziz International Airport, Jeddah, Saudi Arabia">JED - King Abdulaziz International Airport, Jeddah, Saudi Arabia</option>
-        <option value="RUH - King Khalid International Airport, Riyadh, Saudi Arabia">RUH - King Khalid International Airport, Riyadh, Saudi Arabia</option>
-        <option value="MED - Prince Mohammad bin Abdulaziz International Airport, Medina, Saudi Arabia">MED - Prince Mohammad bin Abdulaziz International Airport, Medina, Saudi Arabia</option>
-
-        <!-- Pakistan -->
-        <option value="LHE - Allama Iqbal International Airport, Lahore, Pakistan">LHE - Allama Iqbal International Airport, Lahore, Pakistan</option>
-        <option value="ISB - Islamabad International Airport, Islamabad, Pakistan">ISB - Islamabad International Airport, Islamabad, Pakistan</option>
-        <option value="KHI - Jinnah International Airport, Karachi, Pakistan">KHI - Jinnah International Airport, Karachi, Pakistan</option>
-        <option value="PEW - Bacha Khan International Airport, Peshawar, Pakistan">PEW - Bacha Khan International Airport, Peshawar, Pakistan</option>
-        <option value="MUX - Multan International Airport, Multan, Pakistan">MUX - Multan International Airport, Multan, Pakistan</option>
-
-        <!-- India -->
-        <option value="DEL - Indira Gandhi International Airport, Delhi, India">DEL - Indira Gandhi International Airport, Delhi, India</option>
-        <option value="BOM - Chhatrapati Shivaji Maharaj International Airport, Mumbai, India">BOM - Chhatrapati Shivaji Maharaj International Airport, Mumbai, India</option>
-        <option value="BLR - Kempegowda International Airport, Bengaluru, India">BLR - Kempegowda International Airport, Bengaluru, India</option>
-        <option value="MAA - Chennai International Airport, Chennai, India">MAA - Chennai International Airport, Chennai, India</option>
-        <option value="HYD - Rajiv Gandhi International Airport, Hyderabad, India">HYD - Rajiv Gandhi International Airport, Hyderabad, India</option>
-
-        <!-- China -->
-        <option value="PEK - Beijing Capital International Airport, Beijing, China">PEK - Beijing Capital International Airport, Beijing, China</option>
-        <option value="PKX - Beijing Daxing International Airport, Beijing, China">PKX - Beijing Daxing International Airport, Beijing, China</option>
-        <option value="PVG - Shanghai Pudong International Airport, Shanghai, China">PVG - Shanghai Pudong International Airport, Shanghai, China</option>
-        <option value="CAN - Guangzhou Baiyun International Airport, Guangzhou, China">CAN - Guangzhou Baiyun International Airport, Guangzhou, China</option>
-
-        <!-- Japan -->
-        <option value="NRT - Narita International Airport, Tokyo, Japan">NRT - Narita International Airport, Tokyo, Japan</option>
-        <option value="HND - Haneda Airport, Tokyo, Japan">HND - Haneda Airport, Tokyo, Japan</option>
-        <option value="KIX - Kansai International Airport, Osaka, Japan">KIX - Kansai International Airport, Osaka, Japan</option>
-
-        <!-- South Korea -->
-        <option value="ICN - Incheon International Airport, Seoul, South Korea">ICN - Incheon International Airport, Seoul, South Korea</option>
-        <option value="GMP - Gimpo International Airport, Seoul, South Korea">GMP - Gimpo International Airport, Seoul, South Korea</option>
-
-        <!-- Singapore -->
-        <option value="SIN - Singapore Changi Airport, Singapore">SIN - Singapore Changi Airport, Singapore</option>
-
-        <!-- Thailand -->
-        <option value="BKK - Suvarnabhumi Airport, Bangkok, Thailand">BKK - Suvarnabhumi Airport, Bangkok, Thailand</option>
-        <option value="DMK - Don Mueang International Airport, Bangkok, Thailand">DMK - Don Mueang International Airport, Bangkok, Thailand</option>
-
-        <!-- Malaysia -->
-        <option value="KUL - Kuala Lumpur International Airport, Kuala Lumpur, Malaysia">KUL - Kuala Lumpur International Airport, Kuala Lumpur, Malaysia</option>
-
-        <!-- Indonesia -->
-        <option value="CGK - Soekarno-Hatta International Airport, Jakarta, Indonesia">CGK - Soekarno-Hatta International Airport, Jakarta, Indonesia</option>
-        <option value="DPS - Ngurah Rai International Airport, Bali, Indonesia">DPS - Ngurah Rai International Airport, Bali, Indonesia</option>
-
-        <!-- Australia -->
-        <option value="SYD - Sydney Kingsford Smith Airport, Sydney, Australia">SYD - Sydney Kingsford Smith Airport, Sydney, Australia</option>
-        <option value="MEL - Melbourne Airport, Melbourne, Australia">MEL - Melbourne Airport, Melbourne, Australia</option>
-        <option value="BNE - Brisbane Airport, Brisbane, Australia">BNE - Brisbane Airport, Brisbane, Australia</option>
-        <option value="PER - Perth Airport, Perth, Australia">PER - Perth Airport, Perth, Australia</option>
-
-        <!-- New Zealand -->
-        <option value="AKL - Auckland Airport, Auckland, New Zealand">AKL - Auckland Airport, Auckland, New Zealand</option>
-        <option value="CHC - Christchurch Airport, Christchurch, New Zealand">CHC - Christchurch Airport, Christchurch, New Zealand</option>
-
-        <!-- South Africa -->
-        <option value="JNB - O.R. Tambo International Airport, Johannesburg, South Africa">JNB - O.R. Tambo International Airport, Johannesburg, South Africa</option>
-        <option value="CPT - Cape Town International Airport, Cape Town, South Africa">CPT - Cape Town International Airport, Cape Town, South Africa</option>
-
-        <!-- Egypt -->
-        <option value="CAI - Cairo International Airport, Cairo, Egypt">CAI - Cairo International Airport, Cairo, Egypt</option>
-
-        <!-- Kenya -->
-        <option value="NBO - Jomo Kenyatta International Airport, Nairobi, Kenya">NBO - Jomo Kenyatta International Airport, Nairobi, Kenya</option>
-
-        <!-- Nigeria -->
-        <option value="LOS - Murtala Muhammed International Airport, Lagos, Nigeria">LOS - Murtala Muhammed International Airport, Lagos, Nigeria</option>
-
-        <!-- Brazil -->
-        <option value="GRU - São Paulo/Guarulhos International Airport, São Paulo, Brazil">GRU - São Paulo/Guarulhos International Airport, São Paulo, Brazil</option>
-        <option value="GIG - Rio de Janeiro/Galeão International Airport, Rio de Janeiro, Brazil">GIG - Rio de Janeiro/Galeão International Airport, Rio de Janeiro, Brazil</option>
-
-        <!-- Argentina -->
-        <option value="EZE - Ministro Pistarini International Airport, Buenos Aires, Argentina">EZE - Ministro Pistarini International Airport, Buenos Aires, Argentina</option>
-
-        <!-- Mexico -->
-        <option value="MEX - Mexico City International Airport, Mexico City, Mexico">MEX - Mexico City International Airport, Mexico City, Mexico</option>
-        <option value="CUN - Cancún International Airport, Cancún, Mexico">CUN - Cancún International Airport, Cancún, Mexico</option>
-
-        <!-- Colombia -->
-        <option value="BOG - El Dorado International Airport, Bogotá, Colombia">BOG - El Dorado International Airport, Bogotá, Colombia</option>
-
-        <!-- Chile -->
-        <option value="SCL - Arturo Merino Benítez International Airport, Santiago, Chile">SCL - Arturo Merino Benítez International Airport, Santiago, Chile</option>
-
-    </select>
-</div>         
 
 
-                <div class="form-group">
+            <!-- To Country -->
+            <div>
+                <label for="toCountry" style="
+                    display: block;
+                    margin-bottom: 7px;
+                    font-weight: 600;
+                    font-size: 14px;
+                ">
+                    To Country
+                </label>
 
-                    <label for="departure">
-                        Departure
-                    </label>
-
-                    <input
-                        type="date"
-                        id="departure"
-                        name="Departure Date"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="return">
-                        Return
-                    </label>
-
-                    <input
-                        type="date"
-                        id="return"
-                        name="Return Date"
-                    >
-
-                </div>
+                <select
+    id="toCountry"
+    name="to_country"
+    required
+    onchange="filterAirports()"
+    style="
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        font-size: 15px;
+        box-sizing: border-box;
+        background: white;
+    "
+>
+    <option value="">Select destination country</option>
+    <option value="saudi_arabia">Saudi Arabia</option>
+    <option value="egypt">Egypt</option>
+    <option value="morocco">Morocco</option>
+    <option value="senegal">Senegal</option>
+    <option value="gambia">Gambia</option>
+    <option value="lebanon">Lebanon (Beirut)</option>
+    <option value="uae">Dubai (UAE)</option>
+    <option value="turkey">Istanbul (Turkey)</option>
+    <option value="italy">Italy</option>
+    <option value="france">France</option>
+    <option value="greece">Greece</option>
+    <option value="ivory_coast">Ivory Coast</option>
+    <option value="nigeria">Nigeria</option>
+</select>
 
             </div>
 
 
-        
-            <!-- Passenger Details -->
+            <!-- To Airport -->
+            <div style="grid-column: 1 / -1;">
 
-            <div
-                class="form-grid"
-                style="margin-top:15px;"
-            >
+                <label for="toAirport" style="
+                    display: block;
+                    margin-bottom: 7px;
+                    font-weight: 600;
+                    font-size: 14px;
+                ">
+                    To Airport
+                </label>
 
-                <div class="form-group">
-
-                    <label for="passengers">
-                        Passengers
-                    </label>
-
-                    <select
-                        id="passengers"
-                        name="Passengers"
-                    >
-
-                        <option value="1">
-                            1 Passenger
-                        </option>
-
-                        <option value="2">
-                            2 Passengers
-                        </option>
-
-                        <option value="3">
-                            3 Passengers
-                        </option>
-
-                        <option value="4">
-                            4 Passengers
-                        </option>
-
-                        <option value="5">
-                            5 Passengers
-                        </option>
-
-                        <option value="6">
-                            6 Passengers
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="class">
-                        Cabin Class
-                    </label>
-
-                    <select
-                        id="class"
-                        name="Cabin Class"
-                    >
-
-                        <option value="Economy">
-                            Economy
-                        </option>
-
-                        <option value="Premium Economy">
-                            Premium Economy
-                        </option>
-
-                        <option value="Business">
-                            Business
-                        </option>
-
-                        <option value="First Class">
-                            First Class
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                
+                <select
+                    id="toAirport"
+                    name="to_airport"
+                    required
+                    disabled
+                    style="
+                        width: 100%;
+                        padding: 12px;
+                        border: 1px solid #cbd5e1;
+                        border-radius: 8px;
+                        font-size: 15px;
+                        box-sizing: border-box;
+                        background: white;
+                        color: #333;
+                    "
+                >
+                    <option value="">First select a country</option>
+                </select>
 
             </div>
 
-            <!-- Customer Details -->
-
-            <div class="customer-grid">
-
-                <div class="form-group">
-
-                    <label for="name">
-                        Full Name
-                    </label>
-
-                    <input
-                        type="text"
-                        id="name"
-                        name="Customer Name"
-                        placeholder="Your full name"
-                        autocomplete="name"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="phone">
-                        Phone
-                    </label>
-
-                    <input
-                        type="tel"
-                        id="phone"
-                        name="Phone Number"
-                        placeholder="Phone number"
-                        autocomplete="tel"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="email">
-                        Email
-                    </label>
-
-                    <input
-                        type="email"
-                        id="email"
-                        name="Customer Email"
-                        placeholder="Email address"
-                        autocomplete="email"
-                        required
-                    >
-
-                </div>
-
-            </div>
-
-            <!-- FormSubmit Settings -->
-
-            <input
-                type="hidden"
-                name="_subject"
-                value="Meer International Travel"
-            >
-
-            <input
-                type="hidden"
-                name="_template"
-                value="table"
-            >
-
-            <input
-                type="hidden"
-                name="_captcha"
-                value="true"
-            >
-
-
-            <button
-                type="submit"
-                class="search-button"
-            >
-                Search Flights →
-            </button>
-
-        </form>
-
+        </div>
     </div>
 
+
+    <!-- Travel Details -->
+    <div style="
+        margin-bottom: 25px;
+        padding: 20px;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        background: #f8fafc;
+    ">
+
+        <h3 style="
+            margin: 0 0 18px;
+            font-size: 18px;
+            color: #123c69;
+        ">
+            Travel Details
+        </h3>
+
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        ">
+
+
+            <!-- Trip Type -->
+            <div style="grid-column: 1 / -1;">
+
+                <label style="
+                    display: block;
+                    margin-bottom: 10px;
+                    font-weight: 600;
+                    font-size: 14px;
+                ">
+                    Trip Type
+                </label>
+
+                <div style="
+                    display: flex;
+                    gap: 25px;
+                    align-items: center;
+                    flex-wrap: wrap;
+                ">
+
+                    <!-- One Way -->
+                    <label style="
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        cursor: pointer;
+                        font-size: 15px;
+                    ">
+
+                        <input
+                            type="radio"
+                            name="trip_type"
+                            value="one_way"
+                            checked
+                            onchange="toggleReturnDate()"
+                            style="
+                                width: 17px;
+                                height: 17px;
+                                accent-color: #123c69;
+                                cursor: pointer;
+                            "
+                        >
+
+                        One Way
+
+                    </label>
+
+
+                    <!-- Round Trip -->
+                    <label style="
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        cursor: pointer;
+                        font-size: 15px;
+                    ">
+
+                        <input
+                            type="radio"
+                            name="trip_type"
+                            value="round_trip"
+                            onchange="toggleReturnDate()"
+                            style="
+                                width: 17px;
+                                height: 17px;
+                                accent-color: #123c69;
+                                cursor: pointer;
+                            "
+                        >
+
+                        Round Trip
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- Departure Date -->
+            <div>
+
+                <label for="departureDate" style="
+                    display: block;
+                    margin-bottom: 7px;
+                    font-weight: 600;
+                    font-size: 14px;
+                ">
+                    Departure Date
+                </label>
+
+                <input
+                    type="date"
+                    id="departureDate"
+                    name="departure_date"
+                    required
+                    style="
+                        width: 100%;
+                        padding: 12px;
+                        border: 1px solid #cbd5e1;
+                        border-radius: 8px;
+                        font-size: 15px;
+                        box-sizing: border-box;
+                    "
+                >
+
+            </div>
+
+
+            <!-- Return Date -->
+            <div id="returnDateContainer">
+
+                <label for="returnDate" style="
+                    display: block;
+                    margin-bottom: 7px;
+                    font-weight: 600;
+                    font-size: 14px;
+                ">
+                    Return Date
+                </label>
+
+                <input
+                    type="date"
+                    id="returnDate"
+                    name="return_date"
+                    disabled
+                    style="
+                        width: 100%;
+                        padding: 12px;
+                        border: 1px solid #cbd5e1;
+                        border-radius: 8px;
+                        font-size: 15px;
+                        box-sizing: border-box;
+                    "
+                >
+
+            </div>
+
+
+            <!-- Passenger Count -->
+            <div>
+
+                <label for="passengers" style="
+                    display: block;
+                    margin-bottom: 7px;
+                    font-weight: 600;
+                    font-size: 14px;
+                ">
+                    Passenger Count
+                </label>
+
+                <input
+                    type="number"
+                    id="passengers"
+                    name="passengers"
+                    min="1"
+                    max="20"
+                    value="1"
+                    required
+                    style="
+                        width: 100%;
+                        padding: 12px;
+                        border: 1px solid #cbd5e1;
+                        border-radius: 8px;
+                        font-size: 15px;
+                        box-sizing: border-box;
+                    "
+                >
+
+            </div>
+
+
+            <!-- Cabin Class -->
+            <div>
+
+                <label for="cabinClass" style="
+                    display: block;
+                    margin-bottom: 7px;
+                    font-weight: 600;
+                    font-size: 14px;
+                ">
+                    Cabin Class
+                </label>
+
+                <select
+                    id="cabinClass"
+                    name="cabin_class"
+                    required
+                    style="
+                        width: 100%;
+                        padding: 12px;
+                        border: 1px solid #cbd5e1;
+                        border-radius: 8px;
+                        font-size: 15px;
+                        box-sizing: border-box;
+                        background: white;
+                    "
+                >
+
+                    <option value="economy">Economy</option>
+                    <option value="premium_economy">Premium Economy</option>
+                    <option value="business">Business</option>
+                    <option value="first">First Class</option>
+
+                </select>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Customer Details -->
+    <div style="
+        margin-bottom: 25px;
+        padding: 20px;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        background: #f8fafc;
+    ">
+
+        <h3 style="
+            margin: 0 0 18px;
+            font-size: 18px;
+            color: #123c69;
+        ">
+            Customer Details
+        </h3>
+
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        ">
+
+
+            <!-- Customer Name -->
+            <div>
+
+                <label for="customerName" style="
+                    display: block;
+                    margin-bottom: 7px;
+                    font-weight: 600;
+                    font-size: 14px;
+                ">
+                    Customer Name
+                </label>
+
+                <input
+                    type="text"
+                    id="customerName"
+                    name="customer_name"
+                    placeholder="Enter customer name"
+                    required
+                    style="
+                        width: 100%;
+                        padding: 12px;
+                        border: 1px solid #cbd5e1;
+                        border-radius: 8px;
+                        font-size: 15px;
+                        box-sizing: border-box;
+                    "
+                >
+
+            </div>
+
+
+            <!-- Customer Phone -->
+            <div>
+
+                <label for="customerPhone" style="
+                    display: block;
+                    margin-bottom: 7px;
+                    font-weight: 600;
+                    font-size: 14px;
+                ">
+                    Customer Phone
+                </label>
+
+                <input
+                    type="tel"
+                    id="customerPhone"
+                    name="customer_phone"
+                    placeholder="+92 300 1234567"
+                    required
+                    style="
+                        width: 100%;
+                        padding: 12px;
+                        border: 1px solid #cbd5e1;
+                        border-radius: 8px;
+                        font-size: 15px;
+                        box-sizing: border-box;
+                    "
+                >
+
+            </div>
+
+
+            <!-- Customer Email -->
+            <div style="grid-column: 1 / -1;">
+
+                <label for="customerEmail" style="
+                    display: block;
+                    margin-bottom: 7px;
+                    font-weight: 600;
+                    font-size: 14px;
+                ">
+                    Customer Email
+                </label>
+
+                <input
+                    type="email"
+                    id="customerEmail"
+                    name="customer_email"
+                    placeholder="customer@example.com"
+                    required
+                    style="
+                        width: 100%;
+                        padding: 12px;
+                        border: 1px solid #cbd5e1;
+                        border-radius: 8px;
+                        font-size: 15px;
+                        box-sizing: border-box;
+                    "
+                >
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Search Button -->
+    <button
+        type="submit"
+        style="
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 10px;
+            background: #123c69;
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+        "
+        onmouseover="this.style.background='#0b2948'"
+        onmouseout="this.style.background='#123c69'"
+    >
+        🔎 Search Flights
+    </button>
+
+
+    <!-- JavaScript -->
+    <script>
+
+        /* ==============================
+           AIRPORT DATA
+        ============================== */
+
+       const airports = {
+
+    saudi_arabia: [
+        {
+            name: "King Abdulaziz International Airport - Jeddah",
+            code: "JED"
+        },
+        {
+            name: "King Khalid International Airport - Riyadh",
+            code: "RUH"
+        },
+        {
+            name: "Prince Mohammad Bin Abdulaziz Airport - Medina",
+            code: "MED"
+        },
+        {
+            name: "King Fahd International Airport - Dammam",
+            code: "DMM"
+        }
+    ],
+
+    egypt: [
+        {
+            name: "Cairo International Airport",
+            code: "CAI"
+        },
+        {
+            name: "Borg El Arab International Airport - Alexandria",
+            code: "HBE"
+        },
+        {
+            name: "Hurghada International Airport",
+            code: "HRG"
+        },
+        {
+            name: "Sharm El Sheikh International Airport",
+            code: "SSH"
+        }
+    ],
+
+    morocco: [
+        {
+            name: "Mohammed V International Airport - Casablanca",
+            code: "CMN"
+        },
+        {
+            name: "Marrakesh Menara Airport",
+            code: "RAK"
+        },
+        {
+            name: "Agadir Al Massira Airport",
+            code: "AGA"
+        },
+        {
+            name: "Rabat-Salé Airport",
+            code: "RBA"
+        },
+        {
+            name: "Tangier Ibn Battouta Airport",
+            code: "TNG"
+        }
+    ],
+
+    senegal: [
+        {
+            name: "Blaise Diagne International Airport - Dakar",
+            code: "DSS"
+        }
+    ],
+
+    gambia: [
+        {
+            name: "Banjul International Airport",
+            code: "BJL"
+        }
+    ],
+
+    lebanon: [
+        {
+            name: "Beirut-Rafic Hariri International Airport",
+            code: "BEY"
+        }
+    ],
+
+    uae: [
+        {
+            name: "Dubai International Airport",
+            code: "DXB"
+        },
+        {
+            name: "Al Maktoum International Airport - Dubai",
+            code: "DWC"
+        }
+    ],
+
+    turkey: [
+        {
+            name: "Istanbul Airport",
+            code: "IST"
+        },
+        {
+            name: "Sabiha Gökçen International Airport - Istanbul",
+            code: "SAW"
+        }
+    ],
+
+    italy: [
+        {
+            name: "Leonardo da Vinci–Fiumicino Airport - Rome",
+            code: "FCO"
+        },
+        {
+            name: "Milan Malpensa Airport",
+            code: "MXP"
+        },
+        {
+            name: "Milan Bergamo Airport",
+            code: "BGY"
+        },
+        {
+            name: "Venice Marco Polo Airport",
+            code: "VCE"
+        },
+        {
+            name: "Naples International Airport",
+            code: "NAP"
+        }
+    ],
+
+    france: [
+        {
+            name: "Paris Charles de Gaulle Airport",
+            code: "CDG"
+        },
+        {
+            name: "Paris Orly Airport",
+            code: "ORY"
+        },
+        {
+            name: "Nice Côte d'Azur Airport",
+            code: "NCE"
+        },
+        {
+            name: "Lyon-Saint Exupéry Airport",
+            code: "LYS"
+        },
+        {
+            name: "Marseille Provence Airport",
+            code: "MRS"
+        }
+    ],
+
+    greece: [
+        {
+            name: "Athens International Airport",
+            code: "ATH"
+        },
+        {
+            name: "Thessaloniki Airport",
+            code: "SKG"
+        },
+        {
+            name: "Heraklion International Airport",
+            code: "HER"
+        },
+        {
+            name: "Rhodes International Airport",
+            code: "RHO"
+        }
+    ],
+
+    ivory_coast: [
+        {
+            name: "Félix-Houphouët-Boigny International Airport - Abidjan",
+            code: "ABJ"
+        }
+    ],
+
+    nigeria: [
+        {
+            name: "Murtala Muhammed International Airport - Lagos",
+            code: "LOS"
+        },
+        {
+            name: "Nnamdi Azikiwe International Airport - Abuja",
+            code: "ABV"
+        },
+        {
+            name: "Port Harcourt International Airport",
+            code: "PHC"
+        },
+        {
+            name: "Akanu Ibiam International Airport - Enugu",
+            code: "ENU"
+        },
+        {
+            name: "Mallam Aminu Kano International Airport",
+            code: "KAN"
+        }
+    ]
+
+};
+
+
+
+        /* ==============================
+           FILTER TO AIRPORTS
+        ============================== */
+
+        function filterAirports() {
+
+            const country =
+                document.getElementById("toCountry").value;
+
+            const airportSelect =
+                document.getElementById("toAirport");
+
+            airportSelect.innerHTML = "";
+
+            if (!country) {
+
+                airportSelect.disabled = true;
+
+                const option =
+                    document.createElement("option");
+
+                option.value = "";
+                option.textContent =
+                    "First select a country";
+
+                airportSelect.appendChild(option);
+
+                return;
+            }
+
+            airportSelect.disabled = false;
+
+            const defaultOption =
+                document.createElement("option");
+
+            defaultOption.value = "";
+            defaultOption.textContent =
+                "Select destination airport";
+
+            airportSelect.appendChild(defaultOption);
+
+            const countryAirports =
+                airports[country];
+
+            countryAirports.forEach(function(airport) {
+
+                const option =
+                    document.createElement("option");
+
+                option.value =
+                    airport.code;
+
+                option.textContent =
+                    airport.name + " (" +
+                    airport.code + ")";
+
+                airportSelect.appendChild(option);
+
+            });
+
+        }
+
+
+        /* ==============================
+           ONE WAY / ROUND TRIP
+        ============================== */
+
+        function toggleReturnDate() {
+
+            const tripType =
+                document.querySelector(
+                    'input[name="trip_type"]:checked'
+                ).value;
+
+            const returnDate =
+                document.getElementById("returnDate");
+
+            const returnDateContainer =
+                document.getElementById(
+                    "returnDateContainer"
+                );
+
+
+            if (tripType === "one_way") {
+
+                returnDate.disabled = true;
+                returnDate.required = false;
+                returnDate.value = "";
+
+                returnDateContainer.style.opacity = "0.5";
+
+            } else {
+
+                returnDate.disabled = false;
+                returnDate.required = true;
+
+                returnDateContainer.style.opacity = "1";
+
+            }
+
+        }
+
+
+        /* ==============================
+           DATE RESTRICTIONS
+        ============================== */
+
+        const departureDate =
+            document.getElementById("departureDate");
+
+        const returnDate =
+            document.getElementById("returnDate");
+
+
+        // Get current date from user's browser
+        const today = new Date();
+
+        const year =
+            today.getFullYear();
+
+        const month =
+            String(today.getMonth() + 1)
+            .padStart(2, "0");
+
+        const day =
+            String(today.getDate())
+            .padStart(2, "0");
+
+        const currentDate =
+            year + "-" + month + "-" + day;
+
+
+        // Do not allow past departure dates
+        departureDate.min = currentDate;
+
+
+        // Do not allow past return dates
+        returnDate.min = currentDate;
+
+
+        // When departure date changes
+        departureDate.addEventListener(
+            "change",
+            function() {
+
+                // Return date must be
+                // same as or after departure date
+                returnDate.min = this.value;
+
+
+                // Clear invalid return date
+                if (
+                    returnDate.value &&
+                    returnDate.value < this.value
+                ) {
+
+                    returnDate.value = "";
+
+                }
+
+            }
+        );
+
+
+        /* ==============================
+           INITIAL STATE
+        ============================== */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function() {
+
+                toggleReturnDate();
+
+                // Set minimum dates
+                departureDate.min = currentDate;
+                returnDate.min = currentDate;
+
+            }
+        );
+
+    </script>
+
+</form>
 
     <!-- =========================
          WHY US
