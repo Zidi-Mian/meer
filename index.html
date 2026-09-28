@@ -876,7 +876,7 @@
     <nav class="navbar">
 
         <div class="logo">
-            ✈ Meer Internationl Travel<span> From USA</span>
+            ✈ Meer Internationl Travel<span></span>
         </div>
 
         <ul class="nav-links">
@@ -1331,33 +1331,7 @@
                     flex-wrap: wrap;
                 ">
 
-                    <!-- One Way -->
-                    <label style="
-                        display: flex;
-                        align-items: center;
-                        gap: 8px;
-                        cursor: pointer;
-                        font-size: 15px;
-                    ">
-
-                        <input
-                            type="radio"
-                            name="trip_type"
-                            value="one_way"
-                            checked
-                            onchange="toggleReturnDate()"
-                            style="
-                                width: 17px;
-                                height: 17px;
-                                accent-color: #123c69;
-                                cursor: pointer;
-                            "
-                        >
-
-                        One Way
-
-                    </label>
-
+                    
 
                     <!-- Round Trip -->
                     <label style="
@@ -1382,6 +1356,34 @@
                         >
 
                         Round Trip
+
+                    </label>
+
+
+                    <!-- One Way -->
+                    <label style="
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        cursor: pointer;
+                        font-size: 15px;
+                    ">
+
+                        <input
+                            type="radio"
+                            name="trip_type"
+                            value="one_way"
+                            checked
+                            onchange="toggleReturnDate()"
+                            style="
+                                width: 17px;
+                                height: 17px;
+                                accent-color: #123c69;
+                                cursor: pointer;
+                            "
+                        >
+
+                        One Way
 
                     </label>
 
@@ -1563,7 +1565,7 @@
                     type="text"
                     id="customerName"
                     name="customer_name"
-                    placeholder="Enter customer name"
+                    placeholder="Full Name"
                     required
                     style="
                         width: 100%;
@@ -1594,7 +1596,7 @@
                     type="tel"
                     id="customerPhone"
                     name="customer_phone"
-                    placeholder="+92 300 1234567"
+                    placeholder="Phone"
                     required
                     style="
                         width: 100%;
@@ -1625,7 +1627,7 @@
                     type="email"
                     id="customerEmail"
                     name="customer_email"
-                    placeholder="customer@example.com"
+                    placeholder="Email"
                     required
                     style="
                         width: 100%;
