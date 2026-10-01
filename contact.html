@@ -720,38 +720,38 @@ textarea {
 
             <h2>Get in Touch</h2>
 
-            <form action="https://formspree.io/f/xnpnywpq" method="POST">
+            <form
+  action="https://formspree.io/f/xnpnywpq"
+  method="POST"
+>
+<label>
+    Name:
+    <input type="text" 
+       name="Name"
+       placeholder="Name">
+  </label>
 
-                <input
-                    type="text"
-                   name="customer_name"
-                    placeholder="Your Name"
-                    aria-label="customer_name"
-                    required>
+  <label>
+    Phone:
+    <input type="tel" 
+       name="phone"
+       placeholder="Phone">
+  </label>
 
-                <input
-                    type="email"
-                    placeholder="Your Email"
-                   name="customer_email"
-                    aria-label="Email"
-                    required>
-
-                <input
-                    type="tel"
-                    placeholder="Your Phone"
-                   name="customer_phone"
-                    aria-label="Phone">
-
-                <textarea
-                    placeholder="Your Message"
-                   name="message"
-                    aria-label="Your Message"
-                    required></textarea>
-
-                <button type="submit">
-                    Send Message
-                </button>
-            </form>
+  <label>
+    Email:
+    <input type="email" 
+       name="email"
+       placeholder="Email">
+  </label>
+  <label>
+    Your message:
+    <textarea name="message"
+       placeholder="Your Message"></textarea>
+  </label>
+  <!-- your other form fields go here -->
+  <button type="submit">Send</button>
+</form>
 
         </div>
 
