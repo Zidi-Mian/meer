@@ -679,10 +679,6 @@ textarea {
         <li><a href="contact.html">Contact</a></li>
     </ul>
 
-    <a href="#contact" class="nav-button">
-        Book a Flight
-    </a>
-
     <button
         class="menu-toggle"
         id="menuToggle"
@@ -708,10 +704,6 @@ textarea {
             Contact
         </a>
 
-        <a href="#contact" class="mobile-link mobile-book-button">
-            Book a Flight
-        </a>
-
     </div>
 
 </nav>
@@ -728,7 +720,7 @@ textarea {
 
             <h2>Get in Touch</h2>
 
-            <form>
+            <form action="https://formspree.io/f/xyezaoyp" method="POST">
 
                 <input
                     type="text"
@@ -755,6 +747,41 @@ textarea {
                 <button type="submit">
                     Send Message
                 </button>
+<script>
+document.getElementById("flightForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const form = this;
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending Request...";
+
+    try {
+        const response = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: {
+                "Accept": "application/json"
+            }
+        });
+
+        if (response.ok) {
+            window.location.href =
+                "https://www.meerinternationaltravel.com/thankyou.html";
+        } else {
+            submitButton.disabled = false;
+            submitButton.textContent = "Send Message";
+            alert("There was a problem submitting your request. Please try again.");
+        }
+
+    } catch (error) {
+        submitButton.disabled = false;
+        submitButton.textContent = "Send Message";
+        alert("Network error. Please check your internet connection and try again.");
+    }
+});
+</script>
 
             </form>
 
@@ -766,7 +793,7 @@ textarea {
 
             <p>
                 <strong>Email</strong><br>
-                info@meerinternationaltravel.com
+                info@meerinternationaltravels.com
             </p>
 
             <p>
@@ -822,7 +849,7 @@ textarea {
 
                 <p>
                     Phone# +1 234 567 9793 <br>
-                    Email: info@meerinternationaltravel.com
+                    Email: info@meerinternationaltravels.com
                 </p>
 
                 <p>
