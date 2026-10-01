@@ -3,89 +3,3099 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request Submitted | Meer International Travels</title>
+
+    <title>Meer International Travel</title>
 
     <style>
-        body {
+        * {
             margin: 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #172033;
             background: #f5f8fc;
-            font-family: Arial, sans-serif;
         }
 
-        .thank-you {
-            width: 90%;
-            max-width: 550px;
-            background: #ffffff;
-            padding: 45px 30px;
-            text-align: center;
-            border-radius: 18px;
-            box-shadow: 0 10px 35px rgba(0,0,0,0.10);
-        }
+        /* =========================
+           NAVIGATION
+        ========================== */
 
-        .icon {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 20px;
-            border-radius: 50%;
-            background: #123c69;
+        .navbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 22px 6%;
             color: white;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        .nav-button {
+            padding: 11px 20px;
+            border: 1px solid rgba(255,255,255,0.5);
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .nav-button:hover {
+            background: white;
+            color: #0369a1;
+        }
+
+        /* MOBILE MENU BUTTON */
+
+        .menu-toggle {
+            display: none;
+
+            width: 42px;
+            height: 42px;
+
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 10px;
+
+            background: rgba(0,0,0,0.15);
+            color: white;
+
+            font-size: 22px;
+            cursor: pointer;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: 720px;
+            position: relative;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(4, 18, 38, 0.90),
+                    rgba(4, 18, 38, 0.45),
+                    rgba(4, 18, 38, 0.15)
+                ),
+                url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2000&q=85")
+                center/cover no-repeat;
+
+            display: flex;
+            align-items: center;
+
+            padding: 120px 6% 170px;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            color: white;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 30px;
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            backdrop-filter: blur(8px);
+
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 72px);
+            line-height: 1.05;
+            letter-spacing: -3px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: #38bdf8;
+        }
+
+        .hero p {
+            max-width: 560px;
+            font-size: 18px;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.85);
+        }
+
+        /* =========================
+           BOOKING CARD
+        ========================== */
+
+        .booking-wrapper {
+            position: relative;
+            margin-top: -110px;
+            padding: 0 6%;
+            z-index: 5;
+        }
+
+        .booking-card {
+            max-width: 1200px;
+            margin: auto;
+
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(20px);
+
+            border-radius: 22px;
+            padding: 30px;
+
+            box-shadow:
+                0 25px 70px rgba(15, 23, 42, 0.18);
+        }
+
+        .booking-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .booking-header h2 {
+            color: #102a43;
+            font-size: 24px;
+        }
+
+        .booking-header span {
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .trip-type {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 22px;
+        }
+
+        .trip-type label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .trip-type input {
+            accent-color: #0284c7;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            color: #475569;
+            margin-bottom: 7px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            height: 50px;
+
+            border: 1px solid #dbe3ec;
+            border-radius: 10px;
+
+            padding: 0 14px;
+
+            font-size: 14px;
+            color: #172033;
+            background: white;
+
+            transition: 0.2s;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #0284c7;
+
+            box-shadow:
+                0 0 0 3px rgba(2,132,199,0.10);
+        }
+
+        .customer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 15px;
+        }
+
+        .search-button {
+            width: 100%;
+            height: 52px;
+
+            margin-top: 20px;
+
+            border: none;
+            border-radius: 11px;
+
+            background: linear-gradient(
+                135deg,
+                #0284c7,
+                #0369a1
+            );
+
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 25px rgba(2,132,199,0.25);
+
+            transition: 0.25s;
+        }
+
+        .search-button:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 14px 30px rgba(2,132,199,0.32);
+        }
+
+        /* =========================
+           SECTION
+        ========================== */
+
+        .section {
+            padding: 90px 6%;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 45px;
+        }
+
+        .section-header small {
+            color: #0284c7;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-header h2 {
+            margin-top: 10px;
+            font-size: 38px;
+            color: #102a43;
+        }
+
+        .section-header p {
+            margin-top: 12px;
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           FEATURES
+        ========================== */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+
+            box-shadow:
+                0 8px 30px rgba(15,23,42,0.06);
+
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .feature-icon {
+            width: 55px;
+            height: 55px;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 35px;
+
+            background: #e0f2fe;
+            color: #0284c7;
+
+            border-radius: 14px;
+            font-size: 25px;
+
+            margin-bottom: 20px;
         }
 
-        h1 {
-            color: #123c69;
+        .feature-card h3 {
+            margin-bottom: 10px;
+            color: #102a43;
+        }
+
+        .feature-card p {
+            color: #64748b;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* =========================
+           DESTINATIONS
+        ========================== */
+
+        .destinations {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .destination {
+            height: 280px;
+            border-radius: 18px;
+
+            position: relative;
+            overflow: hidden;
+
+            background-size: cover;
+            background-position: center;
+
+            cursor: pointer;
+        }
+
+        .destination::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    transparent 35%,
+                    rgba(0,0,0,0.78)
+                );
+        }
+
+        .destination-content {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 2;
+            color: white;
+        }
+
+        .destination-content h3 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .destination-content p {
+            font-size: 13px;
+            opacity: 0.85;
+        }
+
+        .new-york {
+            background-image:
+                url("https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?auto=format&fit=crop&w=900&q=80");
+        }
+
+        .miami {
+            background-image:
+                url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80");
+        }
+
+        .los-angeles {
+            background-image:
+                url("https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da?auto=format&fit=crop&w=900&q=80");
+        }
+
+        .las-vegas {
+            background-image:
+                url("https://images.unsplash.com/photo-1513366208864-87536b8bd7b4?auto=format&fit=crop&w=900&q=80");
+        }
+
+        /* =========================
+           CTA
+        ========================== */
+
+        .cta {
+            margin: 20px 6% 80px;
+
+            border-radius: 24px;
+
+            padding: 60px 30px;
+
+            text-align: center;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0369a1,
+                    #0f172a
+                );
+        }
+
+        .cta h2 {
+            font-size: 38px;
             margin-bottom: 12px;
         }
 
-        p {
-            color: #555;
-            font-size: 16px;
-            line-height: 1.6;
+        .cta p {
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 25px;
         }
 
-        .btn {
+        .cta a {
             display: inline-block;
-            margin-top: 20px;
+
+            background: white;
+            color: #0369a1;
+
             padding: 13px 25px;
-            background: #123c69;
-            color: white;
+
+            border-radius: 30px;
+
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
-        .btn:hover {
-            background: #0b2948;
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #071526;
+            color: white;
+
+            padding: 55px 6% 25px;
         }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 60px;
+        }
+
+        .footer-brand h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .footer-brand p {
+            color: #94a3b8;
+            max-width: 350px;
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        /* QUICK NAVIGATION */
+
+        .footer-navigation h4 {
+            font-size: 15px;
+            margin-bottom: 18px;
+            color: white;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(100px, 1fr));
+            gap: 13px 30px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #38bdf8;
+            transform: translateX(3px);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 35px auto 0;
+
+            padding-top: 20px;
+
+            border-top: 1px solid rgba(255,255,255,0.08);
+
+            color: #64748b;
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================== */
+
+        @media (max-width: 1000px) {
+
+            .hero {
+                min-height: 650px;
+            }
+
+            .form-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .customer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .destinations {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-links {
+                gap: 18px;
+            }
+
+            .navbar {
+                padding-left: 4%;
+                padding-right: 4%;
+            }
+
+            .logo {
+                font-size: 21px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+
+        /* =========================
+           MOBILE NAVIGATION
+        ========================== */
+
+        @media (max-width: 750px) {
+
+            .navbar {
+                padding: 18px 5%;
+            }
+
+            .nav-links,
+            .nav-button {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .mobile-menu {
+                position: absolute;
+                top: 75px;
+                left: 5%;
+                right: 5%;
+
+                display: none;
+
+                padding: 12px;
+
+                background: rgba(7, 21, 38, 0.97);
+                backdrop-filter: blur(15px);
+
+                border: 1px solid rgba(255,255,255,0.1);
+                border-radius: 15px;
+
+                box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+            }
+
+            .mobile-menu.active {
+                display: block;
+            }
+
+            .mobile-menu a {
+                display: block;
+
+                padding: 13px 15px;
+
+                color: white;
+                text-decoration: none;
+
+                font-size: 14px;
+                font-weight: 600;
+
+                border-radius: 9px;
+
+                transition: 0.3s;
+            }
+
+            .mobile-menu a:hover {
+                background: rgba(56,189,248,0.12);
+                color: #38bdf8;
+            }
+
+            .mobile-menu .mobile-book-button {
+                margin-top: 8px;
+
+                text-align: center;
+
+                background: #0284c7;
+                color: white;
+            }
+
+            .mobile-menu .mobile-book-button:hover {
+                background: #0369a1;
+                color: white;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 650px) {
+
+            body {
+                overflow-x: hidden;
+            }
+
+            .logo {
+                font-size: 19px;
+                letter-spacing: -0.7px;
+            }
+
+            .hero {
+                min-height: 620px;
+
+                padding:
+                    110px 5% 170px;
+
+                background-position: 60% center;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+                letter-spacing: -2px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .booking-wrapper {
+                margin-top: -100px;
+                padding: 0 4%;
+            }
+
+            .booking-card {
+                padding: 22px 17px;
+                border-radius: 17px;
+            }
+
+            .booking-header {
+                display: block;
+            }
+
+            .booking-header h2 {
+                font-size: 21px;
+            }
+
+            .booking-header span {
+                display: block;
+                margin-top: 5px;
+            }
+
+            .trip-type {
+                gap: 18px;
+            }
+
+            .form-grid,
+            .customer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            input,
+            select {
+                height: 48px;
+                font-size: 16px;
+            }
+
+            .section {
+                padding: 65px 5%;
+            }
+
+            .section-header h2 {
+                font-size: 30px;
+            }
+
+            .features,
+            .destinations {
+                grid-template-columns: 1fr;
+            }
+
+            .destination {
+                height: 250px;
+            }
+
+            .cta {
+                margin: 10px 4% 55px;
+                padding: 45px 20px;
+            }
+
+            .cta h2 {
+                font-size: 29px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .footer-links {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+
+        /* =========================
+           SMALL PHONES
+        ========================== */
+
+        @media (max-width: 380px) {
+
+            .logo {
+                font-size: 17px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .booking-card {
+                padding: 18px 14px;
+            }
+
+            .section-header h2 {
+                font-size: 27px;
+            }
+
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
+        }
+
     </style>
 </head>
 
+
 <body>
 
-    <div class="thank-you">
 
-        <div class="icon">✓</div>
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
 
-        <h1>Thank You!</h1>
+    <nav class="navbar">
+
+        <div class="logo">
+            ✈ Meer Internationl Travel<span></span>
+        </div>
+
+        <ul class="nav-links">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="destination.html">Destinations</a>
+            </li>
+
+            <li>
+                <a href="whyus.html">Why Us</a>
+            </li>
+
+            <li>
+                <a href="contact.html">Contact</a>
+            </li>
+        </ul>
+
+        <!-- MOBILE MENU BUTTON -->
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu">
+            ☰
+        </button>
+
+        <!-- MOBILE MENU -->
+
+        <div class="mobile-menu" id="mobileMenu">
+
+            <a href="index.html" class="mobile-link">
+                Home
+            </a>
+
+            <a href="destination.html" class="mobile-link">
+                Destinations
+            </a>
+
+            <a href="whyus.html" class="mobile-link">
+                Why Us
+            </a>
+
+            <a href="contact.html" class="mobile-link">
+                Contact
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                ✈ Travel Across the World
+            </div>
+
+            <h1>
+                Your Journey<br>
+                <span>Starts Here.</span>
+            </h1>
+
+            <p>
+                Search flights, explore destinations and
+                send your travel request to our booking team.
+            </p>
+            
+
+        </div>
+
+    </section>
+<form action="" method="post"
+    style="
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 30px;
+        background: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+        font-family: Arial, sans-serif;
+        color: #222;
+        box-sizing: border-box;
+    ">
+
+    <div class="booking-header">
+
+                <h2>
+                    ✈ Search & Request a Flight
+                </h2>
+
+                <span>
+                    We'll contact you with available options
+                </span>
+
+            </div>
+
+
+    <!-- Route Section -->
+    <div style="
+        margin-bottom: 25px;
+        padding: 20px;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        background: #f8fafc;
+    ">
+
+        <h3 style="
+            margin: 0 0 18px;
+            font-size: 18px;
+            color: #123c69;
+        ">
+            Route
+        </h3>
+
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        ">
+
+            <!-- From Airport -->
+<div>
+    <label for="fromAirport" style="
+        display: block;
+        margin-bottom: 7px;
+        font-weight: 600;
+        font-size: 14px;
+    ">
+        From Airport
+    </label>
+
+    <input
+        type="text"
+        id="fromAirport"
+        name="from_airport"
+        placeholder="Search USA departure airport..."
+        list="fromAirports"
+        required
+        style="
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+            box-sizing: border-box;
+        "
+    >
+
+    <datalist id="fromAirports">
+
+        <!-- New York -->
+        <option value="John F. Kennedy International Airport - New York (JFK)">
+        <option value="Newark Liberty International Airport - Newark (EWR)">
+        <option value="LaGuardia Airport - New York (LGA)">
+
+        <!-- Los Angeles -->
+        <option value="Los Angeles International Airport - Los Angeles (LAX)">
+        <option value="Hollywood Burbank Airport - Burbank (BUR)">
+        <option value="Long Beach Airport - Long Beach (LGB)">
+
+        <!-- Chicago -->
+        <option value="Chicago O'Hare International Airport - Chicago (ORD)">
+        <option value="Chicago Midway International Airport - Chicago (MDW)">
+
+        <!-- San Francisco -->
+        <option value="San Francisco International Airport - San Francisco (SFO)">
+        <option value="Oakland International Airport - Oakland (OAK)">
+        <option value="San Jose Mineta International Airport - San Jose (SJC)">
+
+        <!-- Washington DC -->
+        <option value="Washington Dulles International Airport - Washington DC (IAD)">
+        <option value="Ronald Reagan Washington National Airport - Washington DC (DCA)">
+        <option value="Baltimore/Washington International Airport - Baltimore (BWI)">
+
+        <!-- Miami -->
+        <option value="Miami International Airport - Miami (MIA)">
+        <option value="Fort Lauderdale-Hollywood International Airport - Fort Lauderdale (FLL)">
+        <option value="Palm Beach International Airport - West Palm Beach (PBI)">
+
+        <!-- Texas -->
+        <option value="Dallas/Fort Worth International Airport - Dallas (DFW)">
+        <option value="Dallas Love Field - Dallas (DAL)">
+        <option value="George Bush Intercontinental Airport - Houston (IAH)">
+        <option value="William P. Hobby Airport - Houston (HOU)">
+        <option value="Austin-Bergstrom International Airport - Austin (AUS)">
+        <option value="San Antonio International Airport - San Antonio (SAT)">
+
+        <!-- Atlanta -->
+        <option value="Hartsfield-Jackson Atlanta International Airport - Atlanta (ATL)">
+
+        <!-- Boston -->
+        <option value="Boston Logan International Airport - Boston (BOS)">
+
+        <!-- Seattle -->
+        <option value="Seattle-Tacoma International Airport - Seattle (SEA)">
+
+        <!-- Denver -->
+        <option value="Denver International Airport - Denver (DEN)">
+
+        <!-- Las Vegas -->
+        <option value="Harry Reid International Airport - Las Vegas (LAS)">
+
+        <!-- Phoenix -->
+        <option value="Phoenix Sky Harbor International Airport - Phoenix (PHX)">
+
+        <!-- Philadelphia -->
+        <option value="Philadelphia International Airport - Philadelphia (PHL)">
+
+        <!-- Detroit -->
+        <option value="Detroit Metropolitan Wayne County Airport - Detroit (DTW)">
+
+        <!-- Minneapolis -->
+        <option value="Minneapolis-Saint Paul International Airport - Minneapolis (MSP)">
+
+        <!-- Charlotte -->
+        <option value="Charlotte Douglas International Airport - Charlotte (CLT)">
+
+        <!-- Orlando -->
+        <option value="Orlando International Airport - Orlando (MCO)">
+        <option value="Orlando Sanford International Airport - Orlando (SFB)">
+
+        <!-- Tampa -->
+        <option value="Tampa International Airport - Tampa (TPA)">
+
+        <!-- Philadelphia / Pennsylvania -->
+        <option value="Pittsburgh International Airport - Pittsburgh (PIT)">
+
+        <!-- North Carolina -->
+        <option value="Raleigh-Durham International Airport - Raleigh (RDU)">
+
+        <!-- Massachusetts -->
+        <option value="Worcester Regional Airport - Worcester (ORH)">
+
+        <!-- Ohio -->
+        <option value="Cleveland Hopkins International Airport - Cleveland (CLE)">
+        <option value="John Glenn Columbus International Airport - Columbus (CMH)">
+        <option value="Cincinnati/Northern Kentucky International Airport - Cincinnati (CVG)">
+
+        <!-- Missouri -->
+        <option value="St. Louis Lambert International Airport - St. Louis (STL)">
+        <option value="Kansas City International Airport - Kansas City (MCI)">
+
+        <!-- Tennessee -->
+        <option value="Nashville International Airport - Nashville (BNA)">
+        <option value="Memphis International Airport - Memphis (MEM)">
+
+        <!-- Louisiana -->
+        <option value="Louis Armstrong New Orleans International Airport - New Orleans (MSY)">
+
+        <!-- Colorado -->
+        <option value="Colorado Springs Airport - Colorado Springs (COS)">
+
+        <!-- Arizona -->
+        <option value="Tucson International Airport - Tucson (TUS)">
+
+        <!-- Nevada -->
+        <option value="Reno-Tahoe International Airport - Reno (RNO)">
+
+        <!-- Oregon -->
+        <option value="Portland International Airport - Portland (PDX)">
+
+        <!-- Utah -->
+        <option value="Salt Lake City International Airport - Salt Lake City (SLC)">
+
+        <!-- Maryland -->
+        <option value="Baltimore/Washington International Airport - Baltimore (BWI)">
+
+        <!-- Hawaii -->
+        <option value="Daniel K. Inouye International Airport - Honolulu (HNL)">
+        <option value="Kahului Airport - Maui (OGG)">
+        <option value="Ellison Onizuka Kona International Airport - Kona (KOA)">
+
+        <!-- Alaska -->
+        <option value="Ted Stevens Anchorage International Airport - Anchorage (ANC)">
+
+        <!-- Other Major Airports -->
+        <option value="Indianapolis International Airport - Indianapolis (IND)">
+        <option value="Nashville International Airport - Nashville (BNA)">
+        <option value="Sacramento International Airport - Sacramento (SMF)">
+        <option value="San Diego International Airport - San Diego (SAN)">
+        <option value="Ontario International Airport - Ontario (ONT)">
+        <option value="John Wayne Airport - Orange County (SNA)">
+        <option value="Jacksonville International Airport - Jacksonville (JAX)">
+        <option value="Cleveland Hopkins International Airport - Cleveland (CLE)">
+        <option value="Milwaukee Mitchell International Airport - Milwaukee (MKE)">
+        <option value="Omaha Eppley Airfield - Omaha (OMA)">
+        <option value="Albuquerque International Sunport - Albuquerque (ABQ)">
+        <option value="El Paso International Airport - El Paso (ELP)">
+        <option value="Boise Airport - Boise (BOI)">
+        <option value="Richmond International Airport - Richmond (RIC)">
+        <option value="Norfolk International Airport - Norfolk (ORF)">
+        <option value="Savannah/Hilton Head International Airport - Savannah (SAV)">
+        <option value="Charleston International Airport - Charleston (CHS)">
+        <option value="Greenville-Spartanburg International Airport - Greenville (GSP)">
+        <option value="Birmingham-Shuttlesworth International Airport - Birmingham (BHM)">
+        <option value="Jackson-Medgar Wiley Evers International Airport - Jackson (JAN)">
+        <option value="Little Rock Clinton National Airport - Little Rock (LIT)">
+        <option value="Oklahoma City Will Rogers International Airport - Oklahoma City (OKC)">
+        <option value="Tulsa International Airport - Tulsa (TUL)">
+        <option value="Des Moines International Airport - Des Moines (DSM)">
+        <option value="Cedar Rapids Airport - Cedar Rapids (CID)">
+        <option value="Buffalo Niagara International Airport - Buffalo (BUF)">
+        <option value="Rochester International Airport - Rochester (ROC)">
+        <option value="Syracuse Hancock International Airport - Syracuse (SYR)">
+        <option value="Albany International Airport - Albany (ALB)">
+        <option value="Hartford Bradley International Airport - Hartford (BDL)">
+        <option value="Providence T.F. Green International Airport - Providence (PVD)">
+        <option value="Manchester-Boston Regional Airport - Manchester (MHT)">
+
+    </datalist>
+</div>
+
+
+
+            <!-- To Country -->
+            <div>
+                <label for="toCountry" style="
+                    display: block;
+                    margin-bottom: 7px;
+                    font-weight: 600;
+                    font-size: 14px;
+                ">
+                    To Country
+                </label>
+
+                <select
+    id="toCountry"
+    name="to_country"
+    required
+    onchange="filterAirports()"
+    style="
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        font-size: 15px;
+        box-sizing: border-box;
+        background: white;
+    "
+>
+    <option value="">Select destination country</option>
+    <option value="saudi_arabia">Saudi Arabia</option>
+    <option value="egypt">Egypt</option>
+    <option value="morocco">Morocco</option>
+    <option value="senegal">Senegal</option>
+    <option value="gambia">Gambia</option>
+    <option value="lebanon">Lebanon (Beirut)</option>
+    <option value="uae">Dubai (UAE)</option>
+    <option value="turkey">Istanbul (Turkey)</option>
+    <option value="italy">Italy</option>
+    <option value="france">France</option>
+    <option value="greece">Greece</option>
+    <option value="ivory_coast">Ivory Coast</option>
+    <option value="nigeria">Nigeria</option>
+</select>
+
+            </div>
+
+
+            <!-- To Airport -->
+            <div style="grid-column: 1 / -1;">
+
+                <label for="toAirport" style="
+                    display: block;
+                    margin-bottom: 7px;
+                    font-weight: 600;
+                    font-size: 14px;
+                ">
+                    To Airport
+                </label>
+
+                <select
+                    id="toAirport"
+                    name="to_airport"
+                    required
+                    disabled
+                    style="
+                        width: 100%;
+                        padding: 12px;
+                        border: 1px solid #cbd5e1;
+                        border-radius: 8px;
+                        font-size: 15px;
+                        box-sizing: border-box;
+                        background: white;
+                        color: #333;
+                    "
+                >
+                    <option value="">First select a country</option>
+                </select>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Travel Details -->
+    <div style="
+        margin-bottom: 25px;
+        padding: 20px;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        background: #f8fafc;
+    ">
+
+        <h3 style="
+            margin: 0 0 18px;
+            font-size: 18px;
+            color: #123c69;
+        ">
+            Travel Details
+        </h3>
+
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        ">
+
+
+            <!-- Trip Type -->
+            <div style="grid-column: 1 / -1;">
+
+                <label style="
+                    display: block;
+                    margin-bottom: 10px;
+                    font-weight: 600;
+                    font-size: 14px;
+                ">
+                    Trip Type
+                </label>
+
+                <div style="
+                    display: flex;
+                    gap: 25px;
+                    align-items: center;
+                    flex-wrap: wrap;
+                ">
+
+                    
+
+                    <!-- Round Trip -->
+                    <label style="
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        cursor: pointer;
+                        font-size: 15px;
+                    ">
+
+                        <input
+                            type="radio"
+                            name="trip_type"
+                            value="round_trip"
+                            onchange="toggleReturnDate()"
+                            style="
+                                width: 17px;
+                                height: 17px;
+                                accent-color: #123c69;
+                                cursor: pointer;
+                            "
+                        >
+
+                        Round Trip
+
+                    </label>
+
+
+                    <!-- One Way -->
+                    <label style="
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        cursor: pointer;
+                        font-size: 15px;
+                    ">
+
+                        <input
+                            type="radio"
+                            name="trip_type"
+                            value="one_way"
+                            checked
+                            onchange="toggleReturnDate()"
+                            style="
+                                width: 17px;
+                                height: 17px;
+                                accent-color: #123c69;
+                                cursor: pointer;
+                            "
+                        >
+
+                        One Way
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- Departure Date -->
+            <div>
+
+                <label for="departureDate" style="
+                    display: block;
+                    margin-bottom: 7px;
+                    font-weight: 600;
+                    font-size: 14px;
+                ">
+                    Departure Date
+                </label>
+
+                <input
+                    type="date"
+                    id="departureDate"
+                    name="departure_date"
+                    required
+                    style="
+                        width: 100%;
+                        padding: 12px;
+                        border: 1px solid #cbd5e1;
+                        border-radius: 8px;
+                        font-size: 15px;
+                        box-sizing: border-box;
+                    "
+                >
+
+            </div>
+
+
+            <!-- Return Date -->
+            <div id="returnDateContainer">
+
+                <label for="returnDate" style="
+                    display: block;
+                    margin-bottom: 7px;
+                    font-weight: 600;
+                    font-size: 14px;
+                ">
+                    Return Date
+                </label>
+
+                <input
+                    type="date"
+                    id="returnDate"
+                    name="return_date"
+                    disabled
+                    style="
+                        width: 100%;
+                        padding: 12px;
+                        border: 1px solid #cbd5e1;
+                        border-radius: 8px;
+                        font-size: 15px;
+                        box-sizing: border-box;
+                    "
+                >
+
+            </div>
+
+
+            <!-- Passenger Count -->
+            <div>
+
+                <label for="passengers" style="
+                    display: block;
+                    margin-bottom: 7px;
+                    font-weight: 600;
+                    font-size: 14px;
+                ">
+                    Passenger Count
+                </label>
+
+                <input
+                    type="number"
+                    id="passengers"
+                    name="passengers"
+                    min="1"
+                    max="20"
+                    value="1"
+                    required
+                    style="
+                        width: 100%;
+                        padding: 12px;
+                        border: 1px solid #cbd5e1;
+                        border-radius: 8px;
+                        font-size: 15px;
+                        box-sizing: border-box;
+                    "
+                >
+
+            </div>
+
+
+            <!-- Cabin Class -->
+            <div>
+
+                <label for="cabinClass" style="
+                    display: block;
+                    margin-bottom: 7px;
+                    font-weight: 600;
+                    font-size: 14px;
+                ">
+                    Cabin Class
+                </label>
+
+                <select
+                    id="cabinClass"
+                    name="cabin_class"
+                    required
+                    style="
+                        width: 100%;
+                        padding: 12px;
+                        border: 1px solid #cbd5e1;
+                        border-radius: 8px;
+                        font-size: 15px;
+                        box-sizing: border-box;
+                        background: white;
+                    "
+                >
+
+                    <option value="economy">Economy</option>
+                    <option value="premium_economy">Premium Economy</option>
+                    <option value="business">Business</option>
+                    <option value="first">First Class</option>
+
+                </select>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Customer Details -->
+    <div style="
+        margin-bottom: 25px;
+        padding: 20px;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        background: #f8fafc;
+    ">
+
+        <h3 style="
+            margin: 0 0 18px;
+            font-size: 18px;
+            color: #123c69;
+        ">
+            Customer Details
+        </h3>
+
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        ">
+
+
+            <!-- Customer Name -->
+            <div>
+
+                <label for="customerName" style="
+                    display: block;
+                    margin-bottom: 7px;
+                    font-weight: 600;
+                    font-size: 14px;
+                ">
+                    Customer Name
+                </label>
+
+                <input
+                    type="text"
+                    id="customerName"
+                    name="customer_name"
+                    placeholder="Full Name"
+                    required
+                    style="
+                        width: 100%;
+                        padding: 12px;
+                        border: 1px solid #cbd5e1;
+                        border-radius: 8px;
+                        font-size: 15px;
+                        box-sizing: border-box;
+                    "
+                >
+
+            </div>
+
+
+            <!-- Customer Phone -->
+            <div>
+
+                <label for="customerPhone" style="
+                    display: block;
+                    margin-bottom: 7px;
+                    font-weight: 600;
+                    font-size: 14px;
+                ">
+                    Customer Phone
+                </label>
+
+                <input
+                    type="tel"
+                    id="customerPhone"
+                    name="customer_phone"
+                    placeholder="Phone"
+                    required
+                    style="
+                        width: 100%;
+                        padding: 12px;
+                        border: 1px solid #cbd5e1;
+                        border-radius: 8px;
+                        font-size: 15px;
+                        box-sizing: border-box;
+                    "
+                >
+
+            </div>
+
+
+            <!-- Customer Email -->
+            <div style="grid-column: 1 / -1;">
+
+                <label for="customerEmail" style="
+                    display: block;
+                    margin-bottom: 7px;
+                    font-weight: 600;
+                    font-size: 14px;
+                ">
+                    Customer Email
+                </label>
+
+                <input
+                    type="email"
+                    id="customerEmail"
+                    name="customer_email"
+                    placeholder="Email"
+                    required
+                    style="
+                        width: 100%;
+                        padding: 12px;
+                        border: 1px solid #cbd5e1;
+                        border-radius: 8px;
+                        font-size: 15px;
+                        box-sizing: border-box;
+                    "
+                >
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Search Button -->
+   
+    <button
+    href=""
+        type="submit"
+        style="
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 10px;
+            background: #123c69;
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+        "
+        onmouseover="this.style.background='#0b2948'"
+        onmouseout="this.style.background='#123c69'"
+    >
+        🔎 Search Flights
+    </button></a>
+
+
+    <!-- JavaScript -->
+    <script>
+
+        /* ==============================
+           AIRPORT DATA
+        ============================== */
+
+       const airports = {
+
+    saudi_arabia: [
+        {
+            name: "King Abdulaziz International Airport - Jeddah",
+            code: "JED"
+        },
+        {
+            name: "King Khalid International Airport - Riyadh",
+            code: "RUH"
+        },
+        {
+            name: "Prince Mohammad Bin Abdulaziz Airport - Medina",
+            code: "MED"
+        },
+        {
+            name: "King Fahd International Airport - Dammam",
+            code: "DMM"
+        }
+    ],
+
+    egypt: [
+        {
+            name: "Cairo International Airport",
+            code: "CAI"
+        },
+        {
+            name: "Borg El Arab International Airport - Alexandria",
+            code: "HBE"
+        },
+        {
+            name: "Hurghada International Airport",
+            code: "HRG"
+        },
+        {
+            name: "Sharm El Sheikh International Airport",
+            code: "SSH"
+        }
+    ],
+
+    morocco: [
+        {
+            name: "Mohammed V International Airport - Casablanca",
+            code: "CMN"
+        },
+        {
+            name: "Marrakesh Menara Airport",
+            code: "RAK"
+        },
+        {
+            name: "Agadir Al Massira Airport",
+            code: "AGA"
+        },
+        {
+            name: "Rabat-Salé Airport",
+            code: "RBA"
+        },
+        {
+            name: "Tangier Ibn Battouta Airport",
+            code: "TNG"
+        }
+    ],
+
+    senegal: [
+        {
+            name: "Blaise Diagne International Airport - Dakar",
+            code: "DSS"
+        }
+    ],
+
+    gambia: [
+        {
+            name: "Banjul International Airport",
+            code: "BJL"
+        }
+    ],
+
+    lebanon: [
+        {
+            name: "Beirut-Rafic Hariri International Airport",
+            code: "BEY"
+        }
+    ],
+
+    uae: [
+        {
+            name: "Dubai International Airport",
+            code: "DXB"
+        },
+        {
+            name: "Al Maktoum International Airport - Dubai",
+            code: "DWC"
+        }
+    ],
+
+    turkey: [
+        {
+            name: "Istanbul Airport",
+            code: "IST"
+        },
+        {
+            name: "Sabiha Gökçen International Airport - Istanbul",
+            code: "SAW"
+        }
+    ],
+
+    italy: [
+        {
+            name: "Leonardo da Vinci–Fiumicino Airport - Rome",
+            code: "FCO"
+        },
+        {
+            name: "Milan Malpensa Airport",
+            code: "MXP"
+        },
+        {
+            name: "Milan Bergamo Airport",
+            code: "BGY"
+        },
+        {
+            name: "Venice Marco Polo Airport",
+            code: "VCE"
+        },
+        {
+            name: "Naples International Airport",
+            code: "NAP"
+        }
+    ],
+
+    france: [
+        {
+            name: "Paris Charles de Gaulle Airport",
+            code: "CDG"
+        },
+        {
+            name: "Paris Orly Airport",
+            code: "ORY"
+        },
+        {
+            name: "Nice Côte d'Azur Airport",
+            code: "NCE"
+        },
+        {
+            name: "Lyon-Saint Exupéry Airport",
+            code: "LYS"
+        },
+        {
+            name: "Marseille Provence Airport",
+            code: "MRS"
+        }
+    ],
+
+    greece: [
+        {
+            name: "Athens International Airport",
+            code: "ATH"
+        },
+        {
+            name: "Thessaloniki Airport",
+            code: "SKG"
+        },
+        {
+            name: "Heraklion International Airport",
+            code: "HER"
+        },
+        {
+            name: "Rhodes International Airport",
+            code: "RHO"
+        }
+    ],
+
+    ivory_coast: [
+        {
+            name: "Félix-Houphouët-Boigny International Airport - Abidjan",
+            code: "ABJ"
+        }
+    ],
+
+    nigeria: [
+        {
+            name: "Murtala Muhammed International Airport - Lagos",
+            code: "LOS"
+        },
+        {
+            name: "Nnamdi Azikiwe International Airport - Abuja",
+            code: "ABV"
+        },
+        {
+            name: "Port Harcourt International Airport",
+            code: "PHC"
+        },
+        {
+            name: "Akanu Ibiam International Airport - Enugu",
+            code: "ENU"
+        },
+        {
+            name: "Mallam Aminu Kano International Airport",
+            code: "KAN"
+        }
+    ]
+
+};
+
+
+
+        /* ==============================
+           FILTER TO AIRPORTS
+        ============================== */
+
+        function filterAirports() {
+
+            const country =
+                document.getElementById("toCountry").value;
+
+            const airportSelect =
+                document.getElementById("toAirport");
+
+            airportSelect.innerHTML = "";
+
+            if (!country) {
+
+                airportSelect.disabled = true;
+
+                const option =
+                    document.createElement("option");
+
+                option.value = "";
+                option.textContent =
+                    "First select a country";
+
+                airportSelect.appendChild(option);
+
+                return;
+            }
+
+            airportSelect.disabled = false;
+
+            const defaultOption =
+                document.createElement("option");
+
+            defaultOption.value = "";
+            defaultOption.textContent =
+                "Select destination airport";
+
+            airportSelect.appendChild(defaultOption);
+
+            const countryAirports =
+                airports[country];
+
+            countryAirports.forEach(function(airport) {
+
+                const option =
+                    document.createElement("option");
+
+                option.value =
+                    airport.code;
+
+                option.textContent =
+                    airport.name + " (" +
+                    airport.code + ")";
+
+                airportSelect.appendChild(option);
+
+            });
+
+        }
+
+
+        /* ==============================
+           ONE WAY / ROUND TRIP
+        ============================== */
+
+        function toggleReturnDate() {
+
+            const tripType =
+                document.querySelector(
+                    'input[name="trip_type"]:checked'
+                ).value;
+
+            const returnDate =
+                document.getElementById("returnDate");
+
+            const returnDateContainer =
+                document.getElementById(
+                    "returnDateContainer"
+                );
+
+
+            if (tripType === "one_way") {
+
+                returnDate.disabled = true;
+                returnDate.required = false;
+                returnDate.value = "";
+
+                returnDateContainer.style.opacity = "0.5";
+
+            } else {
+
+                returnDate.disabled = false;
+                returnDate.required = true;
+
+                returnDateContainer.style.opacity = "1";
+
+            }
+
+        }
+
+
+        /* ==============================
+           DATE RESTRICTIONS
+        ============================== */
+
+        const departureDate =
+            document.getElementById("departureDate");
+
+        const returnDate =
+            document.getElementById("returnDate");
+
+
+        // Get current date from user's browser
+        const today = new Date();
+
+        const year =
+            today.getFullYear();
+
+        const month =
+            String(today.getMonth() + 1)
+            .padStart(2, "0");
+
+        const day =
+            String(today.getDate())
+            .padStart(2, "0");
+
+        const currentDate =
+            year + "-" + month + "-" + day;
+
+
+        // Do not allow past departure dates
+        departureDate.min = currentDate;
+
+
+        // Do not allow past return dates
+        returnDate.min = currentDate;
+
+
+        // When departure date changes
+        departureDate.addEventListener(
+            "change",
+            function() {
+
+                // Return date must be
+                // same as or after departure date
+                returnDate.min = this.value;
+
+
+                // Clear invalid return date
+                if (
+                    returnDate.value &&
+                    returnDate.value < this.value
+                ) {
+
+                    returnDate.value = "";
+
+                }
+
+            }
+        );
+
+
+        /* ==============================
+           INITIAL STATE
+        ============================== */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function() {
+
+                toggleReturnDate();
+
+                // Set minimum dates
+                departureDate.min = currentDate;
+                returnDate.min = currentDate;
+
+            }
+        );
+
+    </script>
+
+</form>
+
+     <!-- =========================
+         WHY US
+    ========================== -->
+
+    <section
+        class="section"
+        id="services"
+    >
+
+        <div class="section-header">
+
+            <small>
+                Why Meer International Travel
+            </small>
+
+            <h2>
+                Travel Made Simple
+            </h2>
+
+            <p>
+                Everything you need to start planning
+                your next journey.
+            </p>
+
+        </div>
+
+
+        <div class="features">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🔎
+                </div>
+
+                <h3>
+                    Easy Search
+                </h3>
+
+                <p>
+                    Tell us where you want to go and
+                    when you want to travel.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    Quick Response
+                </h3>
+
+                <p>
+                    Submit your request and our team
+                    can follow up with available options.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📞
+                </div>
+
+                <h3>
+                    Personal Support
+                </h3>
+
+                <p>
+                    Get assistance with your travel
+                    request from our booking team.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         DESTINATIONS
+    ========================== -->
+
+    <section class="travel-about-page">
+
+
+        <div class="section-header">
+
+            <small>
+                Explore World
+            </small>
+
+            <h2>
+                Popular Destinations
+            </h2>
+
+            <p>
+                Discover some of the most popular
+                cities and vacation destinations.
+            </p>
+
+        </div>
+
+
+        
+<style>
+/* =========================================================
+   PREMIUM TRAVEL ABOUT PAGE
+   ========================================================= */
+
+.travel-about-page {
+  --primary: #0a2540;
+  --primary-2: #123d63;
+  --gold: #c6a15b;
+  --gold-light: #e3c98c;
+  --cream: #faf8f3;
+  --light: #f5f7f9;
+  --white: #ffffff;
+  --dark: #17212b;
+  --text: #5e6b78;
+  --border: #e5e9ed;
+
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.8;
+  overflow: hidden;
+}
+
+.travel-about-page *,
+.travel-about-page *::before,
+.travel-about-page *::after {
+  box-sizing: border-box;
+}
+
+.travel-container {
+  width: min(1180px, 92%);
+  margin: auto;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.travel-hero {
+  min-height: 680px;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5, 20, 34, 0.96) 0%,
+      rgba(5, 20, 34, 0.82) 42%,
+      rgba(5, 20, 34, 0.25) 100%
+    ),
+    url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2000&q=90")
+    center/cover no-repeat;
+}
+
+.travel-hero-content {
+  max-width: 760px;
+  padding: 120px 0;
+  color: white;
+}
+
+.travel-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--gold-light);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+.travel-eyebrow::before {
+  content: "";
+  width: 42px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.travel-hero h1 {
+  margin: 0 0 25px;
+  font-size: clamp(45px, 6vw, 76px);
+  line-height: 1.05;
+  letter-spacing: -2px;
+  font-weight: 700;
+}
+
+.travel-hero h1 span {
+  color: var(--gold-light);
+}
+
+.travel-hero p {
+  max-width: 680px;
+  color: rgba(255,255,255,.86);
+  font-size: 18px;
+  margin: 0 0 32px;
+}
+
+.travel-button {
+  display: inline-block;
+  padding: 15px 30px;
+  background: var(--gold);
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 3px;
+  transition: .3s ease;
+}
+
+.travel-button:hover {
+  background: var(--gold-light);
+  transform: translateY(-3px);
+}
+
+/* =========================================================
+   SECTION COMMON
+   ========================================================= */
+
+.travel-section {
+  padding: 105px 0;
+}
+
+.travel-section-light {
+  background: var(--light);
+}
+
+.travel-section-cream {
+  background: var(--cream);
+}
+
+.travel-label {
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  margin-bottom: 14px;
+}
+
+.travel-title {
+  color: var(--primary);
+  font-size: clamp(34px, 4vw, 50px);
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin: 0 0 22px;
+}
+
+.travel-subtitle {
+  max-width: 720px;
+  margin: 0 auto;
+  color: var(--text);
+}
+
+.travel-center {
+  text-align: center;
+}
+
+/* =========================================================
+   COMPANY STORY
+   ========================================================= */
+
+.travel-story-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 75px;
+  align-items: center;
+}
+
+.travel-story-image {
+  position: relative;
+}
+
+.travel-story-image img {
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+  display: block;
+}
+
+.travel-experience-badge {
+  position: absolute;
+  right: -25px;
+  bottom: 35px;
+  width: 175px;
+  padding: 24px 15px;
+  text-align: center;
+  color: white;
+  background: var(--primary);
+  box-shadow: 0 20px 45px rgba(0,0,0,.2);
+}
+
+.travel-experience-badge strong {
+  display: block;
+  color: var(--gold-light);
+  font-size: 35px;
+  line-height: 1;
+}
+
+.travel-experience-badge span {
+  display: block;
+  margin-top: 8px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.travel-story-text p {
+  margin: 0 0 18px;
+}
+
+/* =========================================================
+   MISSION VISION
+   ========================================================= */
+
+.travel-mv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-top: 55px;
+}
+
+.travel-mv-card {
+  padding: 42px;
+  background: white;
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+.travel-mv-number {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  color: rgba(198,161,91,.15);
+  font-size: 70px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.travel-mv-card h3 {
+  color: var(--primary);
+  font-size: 25px;
+  margin: 0 0 15px;
+}
+
+.travel-mv-card p {
+  margin: 0;
+}
+
+/* =========================================================
+   VALUES
+   ========================================================= */
+
+.travel-values-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 24px;
+  margin-top: 55px;
+}
+
+.travel-value-card {
+  background: white;
+  padding: 38px 30px;
+  border: 1px solid var(--border);
+  transition: .3s ease;
+}
+
+.travel-value-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 18px 45px rgba(10,37,64,.1);
+  border-color: var(--gold-light);
+}
+
+.travel-icon {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  color: var(--gold);
+  background: rgba(198,161,91,.12);
+  font-size: 25px;
+}
+
+.travel-value-card h3 {
+  color: var(--primary);
+  font-size: 20px;
+  margin: 0 0 12px;
+}
+
+.travel-value-card p {
+  margin: 0;
+  font-size: 15px;
+}
+
+/* =========================================================
+   SERVICES
+   ========================================================= */
+
+.travel-services-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 20px;
+  margin-top: 55px;
+}
+
+.travel-service {
+  min-height: 250px;
+  padding: 30px 25px;
+  color: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+.travel-service::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    transparent 20%,
+    rgba(5,20,34,.9)
+  );
+}
+
+.travel-service-content {
+  position: relative;
+  z-index: 2;
+}
+
+.travel-service h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.travel-service p {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255,255,255,.78);
+}
+
+/* =========================================================
+   APPROACH
+   ========================================================= */
+
+.travel-approach-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.travel-approach-image {
+  width: 100%;
+  height: 530px;
+  object-fit: cover;
+}
+
+.travel-check-list {
+  padding: 0;
+  margin: 30px 0 0;
+  list-style: none;
+}
+
+.travel-check-list li {
+  position: relative;
+  padding: 0 0 16px 32px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+  color: var(--primary-2);
+}
+
+.travel-check-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: bold;
+}
+
+/* =========================================================
+   DESTINATIONS
+   ========================================================= */
+
+.travel-destination-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+  margin-top: 55px;
+}
+
+.travel-destination {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.travel-destination img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+
+.travel-destination:hover img {
+  transform: scale(1.08);
+}
+
+.travel-destination-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 25px;
+  color: white;
+  background: linear-gradient(
+    transparent 35%,
+    rgba(0,0,0,.8)
+  );
+}
+
+.travel-destination-overlay h3 {
+  margin: 0;
+  font-size: 23px;
+}
+
+/* =========================================================
+   PROCESS
+   ========================================================= */
+
+.travel-process {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 30px;
+  margin-top: 55px;
+}
+
+.travel-process-item {
+  text-align: center;
+  position: relative;
+}
+
+.travel-process-number {
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 20px;
+  border: 1px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.travel-process-item h3 {
+  color: var(--primary);
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.travel-process-item p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* =========================================================
+   STATISTICS
+   ========================================================= */
+
+.travel-stats {
+  padding: 70px 0;
+  background: var(--primary);
+  color: white;
+}
+
+.travel-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  text-align: center;
+}
+
+.travel-stat {
+  border-right: 1px solid rgba(255,255,255,.15);
+  padding: 10px 20px;
+}
+
+.travel-stat:last-child {
+  border-right: none;
+}
+
+.travel-stat strong {
+  display: block;
+  color: var(--gold-light);
+  font-size: 43px;
+  line-height: 1.2;
+}
+
+.travel-stat span {
+  color: rgba(255,255,255,.7);
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+}
+
+/* =========================================================
+   TESTIMONIALS
+   ========================================================= */
+
+.travel-testimonials {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 25px;
+  margin-top: 55px;
+}
+
+.travel-testimonial {
+  padding: 35px;
+  background: white;
+  border: 1px solid var(--border);
+}
+
+.travel-stars {
+  color: var(--gold);
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+}
+
+.travel-testimonial p {
+  font-style: italic;
+  margin: 0 0 22px;
+}
+
+.travel-client {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* =========================================================
+   MISSION BANNER
+   ========================================================= */
+
+.travel-mission-banner {
+  padding: 110px 20px;
+  color: white;
+  text-align: center;
+
+  background:
+    linear-gradient(
+      rgba(7,25,42,.91),
+      rgba(7,25,42,.91)
+    ),
+    url("https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=2000&q=90")
+    center/cover no-repeat;
+}
+
+.travel-mission-inner {
+  max-width: 850px;
+  margin: auto;
+}
+
+.travel-mission-banner h2 {
+  margin: 0 0 22px;
+  font-size: clamp(35px,5vw,55px);
+  line-height: 1.15;
+}
+
+.travel-mission-banner p {
+  margin: 0;
+  color: rgba(255,255,255,.78);
+  font-size: 17px;
+}
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.travel-final-cta {
+  padding: 90px 20px;
+  text-align: center;
+}
+
+.travel-final-cta h2 {
+  margin: 0 0 15px;
+  color: var(--primary);
+  font-size: clamp(34px,4vw,48px);
+}
+
+.travel-final-cta p {
+  max-width: 680px;
+  margin: 0 auto 30px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width: 950px) {
+
+  .travel-story-grid,
+  .travel-approach-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .travel-values-grid,
+  .travel-testimonials {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .travel-services-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .travel-destination-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .travel-process {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .travel-stat-grid {
+    grid-template-columns: repeat(2,1fr);
+    gap: 30px 0;
+  }
+
+  .travel-stat:nth-child(2) {
+    border-right: none;
+  }
+}
+
+@media(max-width: 650px) {
+
+  .travel-section {
+    padding: 70px 0;
+  }
+
+  .travel-hero {
+    min-height: 600px;
+  }
+
+  .travel-hero-content {
+    padding: 80px 0;
+  }
+
+  .travel-hero h1 {
+    letter-spacing: -1px;
+  }
+
+  .travel-story-grid,
+  .travel-approach-grid,
+  .travel-mv-grid,
+  .travel-values-grid,
+  .travel-services-grid,
+  .travel-destination-grid,
+  .travel-process,
+  .travel-testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  .travel-story-image img,
+  .travel-approach-image {
+    height: 390px;
+  }
+
+  .travel-experience-badge {
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .travel-stat-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .travel-stat {
+    border-right: none;
+  }
+
+  .travel-mission-banner {
+    padding: 75px 20px;
+  }
+}
+</style>
+<div class="travel-destination">
+        <img src="https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?auto=format&fit=crop&w=1200&q=90" alt="New York">
+        <div class="travel-destination-overlay">
+          <div>
+            <h3>New York</h3>
+            <span>USA • Iconic City Life</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="travel-destination">
+        <img src="https://images.unsplash.com/photo-1515895309288-a3815ab7cf81?auto=format&fit=crop&w=1200&q=90" alt="Los Angeles">
+        <div class="travel-destination-overlay">
+          <div>
+            <h3>Los Angeles</h3>
+            <span>USA • Entertainment & Beaches</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="travel-destination">
+        <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?auto=format&fit=crop&w=1200&q=90" alt="Toronto">
+        <div class="travel-destination-overlay">
+          <div>
+            <h3>Toronto</h3>
+            <span>Canada • Modern Multicultural City</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="travel-destination">
+        <img src="https://images.unsplash.com/photo-1507992781348-310259076fe0?auto=format&fit=crop&w=1200&q=90" alt="Vancouver">
+        <div class="travel-destination-overlay">
+          <div>
+            <h3>Vancouver</h3>
+            <span>Canada • Mountains & Ocean</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="travel-destination">
+        <img src="https://images.unsplash.com/photo-1501466044931-62695aada8e9?auto=format&fit=crop&w=1200&q=90" alt="Mexico City">
+        <div class="travel-destination-overlay">
+          <div>
+            <h3>Mexico City</h3>
+            <span>Mexico • Culture & Heritage</span>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ===================== SOUTH AMERICA ===================== -->
+
+      <div class="travel-destination">
+        <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1200&q=90" alt="Rio de Janeiro">
+        <div class="travel-destination-overlay">
+          <div>
+            <h3>Rio de Janeiro</h3>
+            <span>Brazil • Beaches & Carnival</span>
+          </div>
+        </div>
+      </div>
+      </div>
+
+  </div>
+
+</section>
+
+
+    <!-- =========================
+         CTA
+    ========================== -->
+
+    <section
+        class="cta"
+        id="contact"
+    >
+
+        <h2>
+            Ready to Start Your Journey?
+        </h2>
 
         <p>
-            Your flight request has been submitted successfully.
-            Our travel team will review your request and contact you
-            shortly with the available options.
+            Submit your flight request and
+            let us help you plan your trip.
         </p>
 
-        <a href="index.html" class="btn">
-            Back to Home
+        <a href="#booking">
+            Search Flights
         </a>
 
-    </div>
+    </section>
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+
+                <h3>
+                    ✈ Meer International Travel
+                </h3>
+
+                <p>
+                    Phone# +1 234 567 9793 <br>
+                    Email: info@meerinternationaltravel.com
+                </p>
+
+                <p>
+                    A modern travel booking website
+                    for submitting flight requests
+                    and exploring destinations.
+                </p>
+
+            </div>
+
+
+            <!-- QUICK NAVIGATION -->
+
+            <div class="footer-navigation">
+
+                <h4>
+                    Quick Navigation
+                </h4>
+
+                <div class="footer-links">
+
+                    <a href="index.html">
+                        Home
+                    </a>
+
+                    <a href="destination.html">
+                        Destinations
+                    </a>
+
+                    <a href="whyus.html">
+                        Why Us
+                    </a>
+
+                    <a href="#booking">
+                        Book Flight
+                    </a>
+
+                    <a href="contact.html">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            © 2026 Meer International Travel. All rights reserved.
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         MOBILE NAVIGATION SCRIPT
+    ========================== -->
+
+    <script>
+
+        const menuToggle = document.getElementById("menuToggle");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const mobileLinks = document.querySelectorAll(".mobile-link");
+
+        menuToggle.addEventListener("click", function () {
+
+            mobileMenu.classList.toggle("active");
+
+            if (mobileMenu.classList.contains("active")) {
+                menuToggle.innerHTML = "✕";
+                menuToggle.setAttribute("aria-label", "Close navigation menu");
+            } else {
+                menuToggle.innerHTML = "☰";
+                menuToggle.setAttribute("aria-label", "Open navigation menu");
+            }
+
+        });
+
+
+        /* Close menu after clicking a link */
+
+        mobileLinks.forEach(function(link) {
+
+            link.addEventListener("click", function() {
+
+                mobileMenu.classList.remove("active");
+
+                menuToggle.innerHTML = "☰";
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open navigation menu"
+                );
+
+            });
+
+        });
+
+
+        /* Close menu when clicking outside */
+
+        document.addEventListener("click", function(event) {
+
+            if (
+                !mobileMenu.contains(event.target) &&
+                !menuToggle.contains(event.target)
+            ) {
+
+                mobileMenu.classList.remove("active");
+
+                menuToggle.innerHTML = "☰";
+
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open navigation menu"
+                );
+
+            }
+
+        });
+
+    </script>
+
 
 </body>
 </html>
