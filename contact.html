@@ -720,7 +720,7 @@ textarea {
 
             <h2>Get in Touch</h2>
 
-            <form
+            <form id="touch"
   action="https://formspree.io/f/xnpnywpq"
   method="POST"
 >
@@ -749,7 +749,7 @@ textarea {
   <button type="submit">Send</button>
 
 <script>
-document.getElementById("flightForm").addEventListener("submit", async function(event) {
+document.getElementById("touch").addEventListener("submit", async function(event) {
     event.preventDefault();
 
     const form = this;
